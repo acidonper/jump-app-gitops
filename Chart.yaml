@@ -11,5 +11,5 @@ mantainers:
     email: acidonpe@redhat.com
 
 dependencies:
-  - name: jump-app-microservices
+  - name: jump-app-micros
   - name: jump-app-cicd
