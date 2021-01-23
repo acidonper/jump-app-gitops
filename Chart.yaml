@@ -12,10 +12,6 @@ mantainers:
 
 dependencies:
   - name: jump-app-microservices
-    repository: https://acidonper.github.io/jump-app-helm-charts
-    version: ~0.1.0
+    repository: charts/jump-app-microservices
   - name: jump-app-cicd
-    repository: https://acidonper.github.io/jump-app-helm-charts
-    version: ~0.1.0
-
-
+    repository: charts/jump-app-microservices
