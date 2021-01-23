@@ -14,4 +14,4 @@ dependencies:
   - name: jump-app-microservices
     repository: charts/jump-app-microservices
   - name: jump-app-cicd
-    repository: charts/jump-app-microservices
+    repository: charts/jump-app-cicd
