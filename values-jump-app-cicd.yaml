@@ -1,0 +1,56 @@
+##
+# Jump App CICD Chart values
+##
+
+# Subcharts status
+jump-app-cicd: true
+jump-app-microservices: false
+
+# Type of pipelines
+pipeTypes:
+  - nodejs
+  - golang
+  - python
+  - java
+
+# Production Branch
+gitBranchPro: master
+gitBranchDev: develop
+
+# Tekton service account to trigger builds
+sa: tekton-deployments-admin
+
+# Global variables
+global:
+  # Jump microservices settings
+  apps:
+    front-javascript:
+      build: is
+      imagestream: nodejs:latest
+      imagestreamNamespace: openshift
+      versions:
+        - v1
+      type: nodejs
+      gitRepo: https://github.com/acidonper/react-typescrypt-demo.git
+    back-golang:
+      build: dockerfile
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/golang-demo.git
+      type: golang
+    back-python:
+      build: is
+      imagestream: python:latest
+      imagestreamNamespace: openshift
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/python-demo.git
+      type: python
+    back-springboot:
+      build: is
+      imagestream: java:latest
+      imagestreamNamespace: openshift
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/java-springboot-demo.git
+      type: java
