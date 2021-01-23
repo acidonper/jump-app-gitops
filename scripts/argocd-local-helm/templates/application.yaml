@@ -1,0 +1,41 @@
+{{- range $key, $val := $.Values.apps }}
+{{- if $val.enabled }}
+{{- if contains "cicd" $key }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $key }}
+spec:
+  destination:
+    name: ''
+    namespace: {{ $key }}
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .
+    repoURL: '{{ $.Values.helmRepoUrl }}'
+    targetRevision: '{{ $val.branch }}'
+  project: jump-app
+{{- else }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $key }}
+spec:
+  destination:
+    name: ''
+    namespace: {{ $key }}
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .
+    repoURL: '{{ $.Values.helmRepoUrl }}'
+    targetRevision: '{{ $val.branch }}'
+  project: jump-app
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false  
+{{- end }}
+{{- end }}
+{{- end }}

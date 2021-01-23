@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: jump-app
+spec:
+  description: Jump App CI/CD, GitOps, ServiceMesh and so on
+  sourceRepos:
+    - '{{ $.Values.helmRepoUrl }}'
+  destinations:
+{{- range $ns := $.Values.namespaces }}
+    - namespace: {{ $ns }}
+      server: https://kubernetes.default.svc
+{{- end }}  
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
