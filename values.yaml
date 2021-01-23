@@ -1,5 +1,8 @@
 ##
 # Jump App Microservices Chart values
+#
+# PRE environments
+#
 ##
 
 # Subcharts status
@@ -25,7 +28,7 @@ appsDomain: apps.acidonpe.sandbox1736.opentlc.com
 global:
   apps:
     front-javascript:
-      imagetag: develop
+      imagetag: master
       multiVersions:
         enabled: false
       replicas: 1
@@ -44,12 +47,9 @@ global:
       routeTargetPort: http-8080
       backend: back-golang
     back-golang:
-      imagetag: develop
+      imagetag: master
       multiVersions:
-        enabled: true
-        imagetag: develop
-        v1Traffic: 50
-        v2Traffic: 50
+        enabled: false
       replicas: 1
       envVars:
         APP_REF_NAME: jump-app
@@ -65,7 +65,7 @@ global:
       public: true
       routeTargetPort: http-8442
     back-python:
-      imagetag: develop
+      imagetag: master
       multiVersions:
         enabled: false
       replicas: 1
@@ -83,7 +83,7 @@ global:
       public: false
       routeTargetPort: http-8080
     back-springboot:
-      imagetag: develop
+      imagetag: master
       multiVersions:
         enabled: false
       replicas: 1
