@@ -3,8 +3,10 @@
 ##
 
 # Subcharts status
-jump-app-cicd: true
-jump-app-microservices: false
+jump-app-cicd:
+  enabled: true
+jump-app-micros:
+  enabled: false
 
 # Type of pipelines
 pipeTypes:

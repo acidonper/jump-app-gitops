@@ -3,8 +3,10 @@
 ##
 
 # Subcharts status
-jump-app-cicd: false
-jump-app-microservices: true
+jump-app-cicd:
+  enabled: false
+jump-app-micros:
+  enabled: true
 
 # Istio Settings
 istio:

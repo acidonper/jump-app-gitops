@@ -12,4 +12,10 @@ mantainers:
 
 dependencies:
   - name: jump-app-micros
+    repository: 'file://./charts/charts/jump-app-micros'
+    version: 0.1.0
+    condition: jump-app-micros.enabled
   - name: jump-app-cicd
+    repository: 'file://./charts/charts/jump-app-cicd'
+    version: 0.1.0
+    condition: jump-app-cicd.enabled
