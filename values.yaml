@@ -10,6 +10,8 @@ jump-app-cicd:
   enabled: true
 jump-app-micros:
   enabled: false
+jump-app-argocd:
+  enabled: false
 
 # Type of pipelines
 pipeTypes:
