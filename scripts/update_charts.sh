@@ -11,7 +11,7 @@ do
   sleep 2
   git checkout $i
   git submodule update --remote
-  git add ../charts
+  git add ./charts
   git commit -m "Added new charts reference"
   git push origin $i
   echo ""
