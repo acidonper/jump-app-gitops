@@ -63,20 +63,41 @@ cd scripts
 
 **IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
 
-## Access ArgoCD Console
+## ArgoCD
+
+### Access Console
 
 Once ArgoCD Server is installed, it is possible access ArgoCD Web UI follow next procedure:
 
 - Obtain admin password and ArgoCD Server URL
 
 ```$bash
-$ oc login
-$ oc get secret argocd-cluster -o jsonpath='{.data.admin\.password}' -n gitops-argocd | base64 -d
-$ oc get route argocd -n gitops-argocd
+oc login
+oc get secret argocd-cluster -o jsonpath='{.data.admin\.password}' -n gitops-argocd | base64 -d
+oc get route argocd -n gitops-argocd
 argocd-gitops-argocd.apps.<mydomain>
 ```
 
-- Review Application created object in respective namespaces (jump-app-cicd, jump-app-dev, jump-app-pre and jump-app-pro)
+### ArgoCD CLI
+
+- Auth ArgoCD Server using CLI
+
+```$bash
+oc port-forward service/argocd-server 8888:443
+argocd login 127.0.0.1:8888 --username admin --password xxxx
+```
+
+- List ArgoCD Apps
+
+```$bash
+argocd app list
+```
+
+- Sync ArgoCD Apps current state
+
+```$bash
+argocd app sync jump-app-dev
+```
 
 ## Author Information
 
