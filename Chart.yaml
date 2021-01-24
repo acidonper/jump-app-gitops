@@ -19,3 +19,7 @@ dependencies:
     repository: 'file://./charts/charts/jump-app-cicd'
     version: 0.1.0
     condition: jump-app-cicd.enabled
+  - name: jump-app-argocd
+    repository: 'file://./charts/charts/jump-app-argocd'
+    version: 0.1.0
+    condition: jump-app-argocd.enabled
