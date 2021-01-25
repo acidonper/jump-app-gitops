@@ -7,10 +7,6 @@
 oc new-project jump-app-dev
 oc new-project jump-app-pre
 oc new-project jump-app-pro
-oc new-project jump-app-cicd
-
-# Create Service Mesh Namespaces
-oc new-project istio-system
 
 # Create CI/CD Namespace 
 oc new-project jump-app-cicd
