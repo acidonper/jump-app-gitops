@@ -15,7 +15,7 @@ jump-app-argocd:
 
 # Istio Settings
 istio:
-  enabled: false
+  enabled: true
   namespace: istio-system
   mtls: true
 
