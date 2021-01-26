@@ -14,6 +14,10 @@ jump-app-argocd:
 
 jump-app-cicd:
   enabled: true
+  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
+  functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
+  functTestRepoBranch: master
+  functTestMicro: front-javascript
   pipeTypes:
     - nodejs
     - golang
