@@ -6,26 +6,22 @@
 ##
 
 # Subcharts status
-jump-app-cicd:
-  enabled: true
 jump-app-micros:
   enabled: false
+
 jump-app-argocd:
   enabled: false
 
-# Type of pipelines
-pipeTypes:
-  - nodejs
-  - golang
-  - python
-  - java
-
-# Production Branch
-gitBranchPro: master
-gitBranchDev: develop
-
-# Tekton service account to trigger builds
-sa: tekton-deployments-admin
+jump-app-cicd:
+  enabled: true
+  pipeTypes:
+    - nodejs
+    - golang
+    - python
+    - java
+  gitBranchPro: master
+  gitBranchDev: develop
+  sa: tekton-deployments-admin
 
 # Global variables
 global:
