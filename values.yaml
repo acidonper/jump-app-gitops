@@ -27,6 +27,7 @@ jump-app-cicd:
   gitBranchDev: develop
   namespaceDev: jump-app-dev
   namespacePre: jump-app-pre
+  namespacePro: jump-app-pro
   sa: tekton-deployments-admin
 
 # Global variables
