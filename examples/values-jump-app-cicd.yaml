@@ -1,26 +1,34 @@
 ##
 # Jump App CICD Chart values
+#
+# CI/CD Environment
+#
 ##
 
 # Subcharts status
-jump-app-cicd:
-  enabled: true
 jump-app-micros:
   enabled: false
 
-# Type of pipelines
-pipeTypes:
-  - nodejs
-  - golang
-  - python
-  - java
+jump-app-argocd:
+  enabled: false
 
-# Production Branch
-gitBranchPro: master
-gitBranchDev: develop
-
-# Tekton service account to trigger builds
-sa: tekton-deployments-admin
+jump-app-cicd:
+  enabled: true
+  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
+  functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
+  functTestRepoBranch: master
+  functTestMicro: front-javascript
+  pipeTypes:
+    - nodejs
+    - golang
+    - python
+    - java
+  gitBranchPro: master
+  gitBranchDev: develop
+  namespaceDev: jump-app-dev
+  namespacePre: jump-app-pre
+  namespacePro: jump-app-pro
+  sa: tekton-deployments-admin
 
 # Global variables
 global:

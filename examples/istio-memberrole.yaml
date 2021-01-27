@@ -6,3 +6,5 @@ metadata:
 spec:
   members:
     - jump-app-dev
+    - jump-app-pre
+    - jump-app-pro

@@ -13,6 +13,10 @@ oc new-project jump-app-cicd
 
 # Deploy CI/CD solution
 oc new-project gitops-argocd
+
+# Warning messages
 read -p "Are you sure ArgoCD Operator is installed on gitops namespace? Press enter to continue..."
 read -p "Are you sure Service Mesh Operators are installed on istio-system namespace (*If ServiceMesh is enabled)? Press enter to continue..."
-helm template ../charts/jump-app-argocd --debug --namespace gitops-argocd | oc apply -f -
+
+# Apply chart template
+helm template ./charts/jump-app-argocd --debug --namespace gitops-argocd | oc apply -f -

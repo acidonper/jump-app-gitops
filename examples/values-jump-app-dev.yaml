@@ -1,25 +1,24 @@
 ##
 # Jump App Microservices Chart values
+#
+# DEV environment
+#
 ##
 
 # Subcharts status
 jump-app-cicd:
   enabled: false
+jump-app-argocd:
+  enabled: false
 jump-app-micros:
   enabled: true
-
-# Istio Settings
-istio:
-  enabled: false
-  namespace: istio-system
-  mtls: true
-
-# CICD Settings
-cicd:
-  namespace: jump-app-cicd
-
-# Public domain where apps will be published
-appsDomain: apps.acidonpe.sandbox1736.opentlc.com
+  istio:
+    enabled: true
+    namespace: istio-system
+    mtls: true
+  cicd:
+    namespace: jump-app-cicd
+  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
 
 # Global variables
 global:
