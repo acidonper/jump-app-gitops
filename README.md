@@ -14,7 +14,7 @@ As probably known, this automated "tool" is based on helm and tries to integrate
 
 This repository was created to include all automated procedures to achieve the following goals:
 
-- Create required namespaces in Kubernetes (gitops-argocd, jump-app-cicd, jump-app-dev, jump-app-pre and jump-app-pro)
+- Create required namespaces in Kubernetes (gitops-argocd, istio-system, jump-app-cicd, jump-app-dev, jump-app-pre and jump-app-pro)
 - Install required ArgoCD objects (ArgoCD Server, Route, Rolebindings and Applications)
 - Deploy CI/CD objects in jump-app-cicd namespace (Imagestreams, BuildConfigs, Tekton Pipelines, etc)
 - Deploy _Jump App's_ microservices in each environment/namespace
@@ -71,9 +71,9 @@ sh ./scripts/setup.sh
 <answer questions>
 ```
 
-**IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
+**IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
 
-**INFO**: It is possible to deploy Istio objects automatically executing the following command when Istio support is enabled:
+**INFO**: It is possible to deploy Istio objects automatically executing the following command when Istio support is enabled and the operator installed:
 
 ```$bash
 sh ./scripts/setup_istio.sh

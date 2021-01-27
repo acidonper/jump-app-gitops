@@ -8,15 +8,19 @@ oc new-project jump-app-dev
 oc new-project jump-app-pre
 oc new-project jump-app-pro
 
+# Create ArgoCD Namespace
+oc new-project gitops-argocd
+
 # Create CI/CD Namespace 
 oc new-project jump-app-cicd
 
-# Deploy CI/CD solution
-oc new-project gitops-argocd
+# Create Istio Namespace
+oc new-project istio-system
 
-# Warning messages
-read -p "Are you sure ArgoCD Operator is installed on gitops namespace? Press enter to continue..."
-read -p "Are you sure Service Mesh Operators are installed on istio-system namespace (*If ServiceMesh is enabled)? Press enter to continue..."
+# Install Operators
+oc apply -f ./examples/operators/argocd.yaml
+oc apply -f ./examples/operators/tekton.yaml
+oc apply -f ./examples/operators/istio.yaml
 
 # Apply chart template
 helm template ./charts/jump-app-argocd --debug --namespace gitops-argocd | oc apply -f -
