@@ -26,7 +26,7 @@ jump-app-micros:
 global:
   apps:
     front-javascript:
-      imagetag: master
+      imagetag: production
       multiVersions:
         enabled: true
         imagetag: production
@@ -48,7 +48,7 @@ global:
       routeTargetPort: http-8080
       backend: back-golang
     back-golang:
-      imagetag: master
+      imagetag: production
       multiVersions:
         enabled: true
         imagetag: production
@@ -69,7 +69,7 @@ global:
       public: true
       routeTargetPort: http-8442
     back-python:
-      imagetag: master
+      imagetag: production
       multiVersions:
         enabled: true
         imagetag: production
@@ -90,7 +90,7 @@ global:
       public: false
       routeTargetPort: http-8080
     back-springboot:
-      imagetag: master
+      imagetag: production
       multiVersions:
         enabled: true
         imagetag: production
