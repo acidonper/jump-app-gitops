@@ -19,7 +19,7 @@ jump-app-micros:
     mtls: true
   cicd:
     namespace: jump-app-cicd
-  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
+  appsDomain: apps-crc.testing
 
 # Global variables
 global:
@@ -46,10 +46,7 @@ global:
     back-golang:
       imagetag: develop
       multiVersions:
-        enabled: true
-        imagetag: develop
-        v1Traffic: 50
-        v2Traffic: 50
+        enabled: false
       replicas: 1
       envVars:
         APP_REF_NAME: jump-app
