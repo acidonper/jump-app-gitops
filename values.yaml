@@ -1,7 +1,7 @@
 ##
 # Jump App CICD Chart values
 #
-# CI/CD Environment
+# CI/CD CRC Environment
 #
 ##
 
@@ -14,7 +14,7 @@ jump-app-argocd:
 
 jump-app-cicd:
   enabled: true
-  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
+  appsDomain: apps-crc.testing
   functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
   functTestRepoBranch: master
   functTestMicro: front-javascript
