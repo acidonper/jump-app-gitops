@@ -3,7 +3,7 @@
 # Update charts reference in all branches
 #
 
-BRANCHES="feature/jump-app-cicd feature/jump-app-pre feature/jump-app-pro feature/jump-app-dev master"
+BRANCHES="feature/jump-app-cicd feature/jump-app-pre feature/jump-app-pro feature/jump-app-dev crc crc-cicd master"
 
 for i in $BRANCHES
 do
