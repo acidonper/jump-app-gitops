@@ -2,7 +2,7 @@
 ##
 # Setup Openshift Environment
 ##
-echo "Setting Up Jump App stuff in Openshift..."
+echo "Setting Up Jump App stuff..."
 
 # Create Namespaces in order to deploy applications
 echo "Creating namespaces..."
@@ -21,13 +21,13 @@ oc new-project istio-system
 # Install Operators
 echo "Installing ArgoCD operator..."
 oc apply -f ./examples/operators/argocd.yaml
-sleep 30
+sleep 60
 echo "Installing Tekton operator..."
 oc apply -f ./examples/operators/tekton.yaml
-sleep 30
+sleep 60
 echo "Installing Istio operator..."
 oc apply -f ./examples/operators/istio.yaml
-sleep 30
+sleep 60
 
 # Wait time to install operators
 echo "Waiting for Operators are ready..."
@@ -36,7 +36,7 @@ sleep 60
 # Apply chart template
 echo "Creating ArgoCD Server, project, CI/CD Application and so on..."
 oc project gitops-argocd
-helm template ./charts/jump-app-argocd -f ./scripts/files/values-argocd.yaml --debug --namespace gitops-argocd | oc apply -f -
+helm template ./charts/jump-app-argocd -f ./scripts/files/crc-values-argocd.yaml --debug --namespace gitops-argocd | oc apply -f -
 sleep 10
 
 # Notifications
