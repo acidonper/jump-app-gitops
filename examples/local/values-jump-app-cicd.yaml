@@ -1,0 +1,58 @@
+##
+# Jump App CICD Chart values
+#
+# CI/CD CRC Environment
+#
+##
+
+# Subcharts status
+appsDomain: apps-crc.testing
+functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
+functTestRepoBranch: master
+functTestMicro: front-javascript
+pipeTypes:
+    - nodejs
+    - golang
+    - python
+    - java
+gitBranchPro: master
+gitBranchDev: develop
+namespaceDev: jump-app-dev
+namespacePre: jump-app-pre
+namespacePro: jump-app-pro
+sa: tekton-deployments-admin
+  
+  # Global variables
+  global:
+    # Jump microservices settings
+    apps:
+      front-javascript:
+        build: is
+        imagestream: nodejs:latest
+        imagestreamNamespace: openshift
+        versions:
+          - v1
+        type: nodejs
+        gitRepo: https://github.com/acidonper/react-typescrypt-demo.git
+      back-golang:
+        build: dockerfile
+        versions:
+          - v1
+        gitRepo: https://github.com/acidonper/golang-demo.git
+        type: golang
+      back-python:
+        build: is
+        imagestream: python:latest
+        imagestreamNamespace: openshift
+        versions:
+          - v1
+        gitRepo: https://github.com/acidonper/python-demo.git
+        type: python
+      back-springboot:
+        build: is
+        imagestream: java:latest
+        imagestreamNamespace: openshift
+        versions:
+          - v1
+        gitRepo: https://github.com/acidonper/java-springboot-demo.git
+        type: java

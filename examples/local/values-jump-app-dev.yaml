@@ -1,0 +1,107 @@
+##
+# Jump App Microservices Chart values
+#
+# DEV environment
+#
+##
+
+istio:
+  enabled: false
+  namespace: istio-system
+  mtls: true
+
+cicd:
+  namespace: jump-app-cicd
+
+appsDomain: apps.acidonpe.sandbox507.opentlc.com
+
+# Global variables
+global:
+  apps:
+    front-javascript:
+      imagetag: develop
+      multiVersions:
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 3000
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8080
+          protocol: TCP
+          targetPort: 3000
+      public: true
+      routeTargetPort: http-8080
+      backend: back-golang
+    back-golang:
+      imagetag: develop
+      multiVersions:
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8442
+          protocol: TCP
+      servicePorts:
+        http-8442:
+          port: 8442
+          protocol: TCP
+          targetPort: 8442
+      public: true
+      routeTargetPort: http-8442
+    back-python:
+      imagetag: develop
+      multiVersions:
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8444
+          protocol: TCP
+          targetPort: 8080
+      public: false
+      routeTargetPort: http-8080
+    back-springboot:
+      imagetag: develop
+      multiVersions:
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+        https:
+          containerPort: 8443
+          protocol: TCP
+        service:
+          containerPort: 8778
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8080
+          protocol: TCP
+          targetPort: 8080
+        http-8443:
+          port: 8443
+          protocol: TCP
+          targetPort: 8443
+        http-8778:
+          port: 8778
+          protocol: TCP
+          targetPort: 8778
+      public: false
+      routeTargetPort: http-8443

@@ -1,0 +1,30 @@
+##
+# Jump App ArgoCD Chart values
+##
+
+# Helm Repo GIT
+helmRepoUrl: https://github.com/acidonper/jump-app-gitops.git
+
+# ArgoCD apps definition
+apps:
+  jump-app-cicd:
+    branch: feature/jump-app-cicd 
+    enabled: true
+  jump-app-pro:
+    branch: feature/jump-app-pro
+    enabled: false
+  jump-app-pre:
+    branch: feature/jump-app-pre
+    enabled: false
+  jump-app-dev:
+    branch: feature/jump-app-dev 
+    enabled: false
+
+# Namespaces handled by Helm
+namespaces:
+  - jump-app-dev
+  - jump-app-pre
+  - jump-app-pro
+  - jump-app-cicd
+  - istio-system
+

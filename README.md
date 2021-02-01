@@ -52,6 +52,12 @@ This repository has a set of branches in order to manage different environments 
 
 If the priority is making use of this solution and not waste any time, the following procedure install _Jump App_ and configure CI/CD and GitOps solutions automatically:
 
+- Download submodules
+
+```$bash
+git submodule update --remote
+```
+
 - Modify required variables files depends on environments
 
 ```$bash
@@ -89,7 +95,7 @@ Once ArgoCD Server is installed, it is possible access ArgoCD Web UI follow next
 ```$bash
 oc login
 oc get secret argocd-cluster -o jsonpath='{.data.admin\.password}' -n gitops-argocd | base64 -d
-oc get route argocd -n gitops-argocd
+oc get route argocd-server -n gitops-argocd
 argocd-gitops-argocd.apps.<mydomain>
 ```
 
@@ -112,6 +118,28 @@ argocd app list
 
 ```$bash
 argocd app sync jump-app-dev
+```
+
+## Charts Tests
+
+### Jump App ArgoCD
+
+```$bash
+helm template ./charts/jump-app-argocd -f examples/local/values-jump-app-argocd.yaml --debug --namespace gitops-argocd
+```
+
+### Jump App CI/CD
+
+```$bash
+helm template ./charts/jump-app-cicd -f examples/local/values-jump-app-cicd.yaml --namespace jump-app-cicd
+```
+
+### Jump App
+
+- DEV
+
+```$bash
+helm template ./charts/jump-app-micros -f examples/local/values-jump-app-dev.yaml --namespace jump-app-dev
 ```
 
 ## Author Information
