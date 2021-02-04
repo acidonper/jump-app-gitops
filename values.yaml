@@ -19,7 +19,7 @@ jump-app-micros:
     mtls: true
   cicd:
     namespace: jump-app-cicd
-  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
+  appsDomain: apps.acidonpe.sandbox507.opentlc.com
 
 # Global variables
 global:
