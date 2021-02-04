@@ -14,7 +14,7 @@ jump-app-argocd:
 jump-app-micros:
   enabled: true
   istio:
-    enabled: true
+    enabled: false
     namespace: istio-system
     mtls: true
   cicd:
