@@ -28,7 +28,7 @@ global:
       imagetag: develop
       multiVersions:
         enabled: false
-      replicas: 2
+      replicas: 1
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -46,10 +46,7 @@ global:
     back-golang:
       imagetag: develop
       multiVersions:
-        enabled: true
-        imagetag: develop
-        v1Traffic: 50
-        v2Traffic: 50
+        enabled: false
       replicas: 1
       envVars:
         APP_REF_NAME: jump-app
