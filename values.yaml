@@ -19,10 +19,10 @@ jump-app-micros:
     mtls: true
   cicd:
     namespace: jump-app-cicd
-  appsDomain: apps-crc.testing
 
 # Global variables
 global:
+  appsDomain: apps-crc.testing
   apps:
     front-javascript:
       imagetag: develop
