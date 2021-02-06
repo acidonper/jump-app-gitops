@@ -18,10 +18,10 @@ jump-app-micros:
     mtls: true
   cicd:
     namespace: jump-app-cicd
-  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
 
 # Global variables
 global:
+  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
   apps:
     front-javascript:
       imagetag: develop

@@ -13,10 +13,9 @@ istio:
 cicd:
   namespace: jump-app-cicd
 
-appsDomain: apps.acidonpe.sandbox507.opentlc.com
-
 # Global variables
 global:
+  appsDomain: apps.acidonpe.sandbox507.opentlc.com
   apps:
     front-javascript:
       imagetag: develop
