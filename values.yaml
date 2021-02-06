@@ -5,7 +5,6 @@
 #
 ##
 
-
 # Subcharts status
 jump-app-cicd:
   enabled: false
@@ -19,16 +18,16 @@ jump-app-micros:
     mtls: true
   cicd:
     namespace: jump-app-cicd
-  appsDomain: apps.acidonpe.sandbox507.opentlc.com
-
+  
 # Global variables
 global:
+  appsDomain: apps.acidonpe.sandbox507.opentlc.com
   apps:
     front-javascript:
       imagetag: develop
       multiVersions:
         enabled: false
-      replicas: 4
+      replicas: 1
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
