@@ -58,7 +58,7 @@ If the priority is making use of this solution and not waste any time, the follo
 git submodule update --remote
 ```
 
-- Modify appsDomain parameters (*When it is required)
+- Modify _appsDomain_ parameter (*When it is required)
 
 ```$bash
 sh scripts/extra/update_charts_domain.sh apps.mydomain.com 
@@ -73,7 +73,7 @@ sh ./scripts/setup.sh
 
 **IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
 
-*INFO*: It is possible to deploy Istio objects automatically executing the following command when Istio support is enabled and the operator installed:
+*INFO*: It is possible to deploy Istio objects automatically executing the following command when Istio support is enabled and the respective operators are installed (Service Mesh, Kiali, etc):
 
 ```$bash
 sh ./scripts/extra/setup_istio.sh

@@ -17,7 +17,7 @@ APPS_DOMAIN=$1
 
 for i in $BRANCHES
 do
-  echo "Updating charts in $i..."
+  echo "Adding ${APPS_DOMAIN} domain in $i..."
   sleep 2
   git checkout $i
   sed -i "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values.yaml
@@ -26,3 +26,5 @@ do
   git push origin $i
   echo ""
 done
+
+git checkout master
