@@ -21,8 +21,8 @@ do
   sleep 2
   git checkout $i
   sed -i "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values.yaml
-  git add ./charts
-  git commit -m "Added new charts reference"
+  git add values.yaml
+  git commit -m "Added ${APPS_DOMAIN} domain in appsDomain parameter"
   git push origin $i
   echo ""
 done
