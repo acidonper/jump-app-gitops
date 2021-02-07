@@ -58,15 +58,10 @@ If the priority is making use of this solution and not waste any time, the follo
 git submodule update --remote
 ```
 
-- Modify required variables files depends on environments
+- Modify appsDomain parameters (*When it is required)
 
 ```$bash
-git checkout [ feature/jump-app-cicd | feature/jump-app-pro | feature/jump-app-pre | feature/jump-app-dev ]
-vi values.yml # E.g. appsDomain
-git add -A
-git commit -m "Modified apps domain"
-ggpush
-git checkout master
+sh scripts/extra/update_charts_domain.sh apps.mydomain.com 
 ```
 
 - Execute _setup.sh_ script
