@@ -64,20 +64,20 @@ git submodule update --remote
 sh scripts/extra/update_charts_domain.sh apps.mydomain.com 
 ```
 
-- Execute _setup.sh_ script
+- Execute _setup.sh_ script for installing Operator
 
 ```$bash
 oc login
 sh ./scripts/setup.sh
 ```
 
-**IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
-
-*INFO*: It is possible to deploy Istio objects automatically executing the following command when Istio support is enabled and the respective operators are installed (Service Mesh, Kiali, etc):
+**NOTE**: It is possible to deploy Red Hat Service Mesh solution passing the following parameter to _setup.sh_ script:
 
 ```$bash
-sh ./scripts/extra/setup_istio.sh
+sh ./scripts/setup.sh --servicemesh
 ```
+
+**IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
 
 ## ArgoCD
 
