@@ -83,8 +83,7 @@ sh ./scripts/setup.sh --servicemesh
 
 ### Custom Installation
 
-When it is required to modify Jump App environments in order to avoid some environments, for example, it is required to modify *scripts/files/values-argocd.yaml* file in order to specify this requirement.
-
+When it is required to modify Jump App installation in order to customize the number of environments, for example, it is required to modify *./scripts/files/values-argocd.yaml* file in order to specify these requirements.
 
 #### E.g. Deploy ArgoCD and CI/CD elements
 
