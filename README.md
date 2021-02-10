@@ -39,7 +39,7 @@ Optional requirements when Service Mesh is activated:
 - Service Mesh Control Plane Object with default gateways configured (*Please, find object examples in examples folder*)
 - Service Mesh Member Roll Object configured (*Please, find object examples in examples folder*)
 
-IMPORTANT: Quick Start section (_setup.sh_ script) include the procedure to install the previous requirements automatically with the exception of *Red Hat Openshift Container Platform Cluster +4.5*.
+IMPORTANT: Quick Start section (_setup.sh_ script) include the procedure to install the previous requirements automatically with the exception of *Red Hat Openshift Container Platform Cluster +4.5* and *Helm* in your local machine.
 
 ## Multi Branch
 
@@ -52,7 +52,7 @@ This repository has a set of branches in order to manage different environments 
 
 ## Quick Start
 
-If the priority is making use of this solution and not waste any time, the following procedure install _Jump App_ and configure CI/CD and GitOps solutions automatically:
+_Jump App_ architecture contains three environments (dev, pre and pro) where the application is deployed automatically. If the priority is making use of this solution with three environments and not waste any time, the following procedure install _Jump App_ and configure CI/CD and GitOps solutions automatically:
 
 - Download submodules
 
@@ -80,6 +80,79 @@ sh ./scripts/setup.sh --servicemesh
 ```
 
 **IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
+
+### Custom Installation
+
+When it is required to modify Jump App environments in order to avoid some environments, for example, it is required to modify *scripts/files/values-argocd.yaml* file in order to specify this requirement.
+
+
+#### E.g. Deploy ArgoCD and CI/CD elements
+
+```$bash
+vi scripts/files/values-argocd.yaml
+
+##
+# Jump App ArgoCD Chart values
+##
+
+# Helm Repo GIT
+helmRepoUrl: https://github.com/acidonper/jump-app-gitops.git
+
+# ArgoCD apps definition
+apps:
+  jump-app-cicd:
+    branch: feature/jump-app-cicd 
+    enabled: true
+  jump-app-pro:
+    branch: feature/jump-app-pro
+    enabled: false
+  jump-app-pre:
+    branch: feature/jump-app-pre
+    enabled: false
+  jump-app-dev:
+    branch: feature/jump-app-dev 
+    enabled: false
+...
+```
+
+```$bash
+oc login
+sh ./scripts/setup.sh
+```
+
+#### E.g. Deploy ArgoCD, CI/CD elements and DEV environment
+
+```$bash
+vi scripts/files/values-argocd.yaml
+
+##
+# Jump App ArgoCD Chart values
+##
+
+# Helm Repo GIT
+helmRepoUrl: https://github.com/acidonper/jump-app-gitops.git
+
+# ArgoCD apps definition
+apps:
+  jump-app-cicd:
+    branch: feature/jump-app-cicd 
+    enabled: true
+  jump-app-pro:
+    branch: feature/jump-app-pro
+    enabled: false
+  jump-app-pre:
+    branch: feature/jump-app-pre
+    enabled: false
+  jump-app-dev:
+    branch: feature/jump-app-dev 
+    enabled: true
+...
+```
+
+```$bash
+oc login
+sh ./scripts/setup.sh
+```
 
 ## ArgoCD
 

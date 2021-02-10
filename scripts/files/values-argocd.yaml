@@ -12,13 +12,13 @@ apps:
     enabled: true
   jump-app-pro:
     branch: feature/jump-app-pro
-    enabled: false
+    enabled: true
   jump-app-pre:
     branch: feature/jump-app-pre
-    enabled: false
+    enabled: true
   jump-app-dev:
     branch: feature/jump-app-dev 
-    enabled: false
+    enabled: true
 
 # Namespaces handled by Helm
 namespaces:
