@@ -39,6 +39,8 @@ Optional requirements when Service Mesh is activated:
 - Service Mesh Control Plane Object with default gateways configured (*Please, find object examples in examples folder*)
 - Service Mesh Member Roll Object configured (*Please, find object examples in examples folder*)
 
+IMPORTANT: Quick Start section (_setup.sh_ script) include the procedure to install the previous requirements automatically with the exception of *Red Hat Openshift Container Platform Cluster +4.5*.
+
 ## Multi Branch
 
 This repository has a set of branches in order to manage different environments configuration files in ArgoCD. If you want to modify default values, it is required access to the specific branch, modify values.yaml file and push the file to the git repository.
