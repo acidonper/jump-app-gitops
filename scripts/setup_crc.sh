@@ -20,13 +20,13 @@ oc new-project istio-system
 
 # Install Operators
 echo "Installing ArgoCD operator..."
-oc apply -f ./examples/operators/argocd.yaml
+oc apply -f ./scripts/files/operators/argocd.yaml
 sleep 60
 echo "Installing Tekton operator..."
-oc apply -f ./examples/operators/tekton.yaml
+oc apply -f ./scripts/files/operators/tekton.yaml
 sleep 60
 echo "Installing Istio operator..."
-oc apply -f ./examples/operators/istio.yaml
+oc apply -f ./scripts/files/operators/istio.yaml
 sleep 60
 
 # Wait time to install operators
