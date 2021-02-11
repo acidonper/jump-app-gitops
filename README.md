@@ -54,6 +54,12 @@ This repository has a set of branches in order to manage different environments 
 
 _Jump App_ architecture contains three environments (dev, pre and pro) where the application is deployed automatically. If the priority is making use of this solution with three environments and not waste any time, the following procedure install _Jump App_ and configure CI/CD and GitOps solutions automatically:
 
+- Openshift login
+
+```$bash
+oc login -u <user> -p <pass> <ocp_cluster_console>
+```
+
 - Download submodules
 
 ```$bash
@@ -152,6 +158,33 @@ apps:
 oc login
 sh ./scripts/setup.sh
 ```
+
+### Local CRC Installation (CodeReady Containers)
+
+CodeReady Containers brings a minimal, preconfigured OpenShift cluster to your local laptop or desktop computer for development and testing purposes. CodeReady Containers supports native hypervisors for Linux, macOS, and Windows 10. You can download CodeReady Containers from the [Red Hat CodeReady Containers product page](https://developers.redhat.com/products/codeready-containers).
+
+_Jump App_ architecture could be deployed in CRC using the following procedure:
+
+- Openshift login
+
+```$bash
+oc login -u <user> -p <pass> <ocp_cluster_console>
+```
+
+- Download submodules
+
+```$bash
+git submodule update --remote
+```
+
+- Execute _setup.sh_ script for installing Operator
+
+```$bash
+oc login
+sh ./scripts/setup_crc.sh
+```
+
+**NOTE**: It is important to bear in mind that *Jump App* CRC deployment configuration is located in scripts/files/values-argocd.yaml and ArgoCD is using *crc-cicd* and *cicd* branches to deploy _Jump App CI/CD solution_ and a single environment respectively. 
 
 ## ArgoCD
 

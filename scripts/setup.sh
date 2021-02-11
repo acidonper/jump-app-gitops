@@ -39,7 +39,7 @@ then
 
     # Wait for Istio Operator are ready
     echo "Waiting for Istio Operators is ready..."
-    sleep 60
+    sleep 180
 
     # Aplying Controlplane and Memberrole objects
     echo "Installing Istio Control Plane..."
