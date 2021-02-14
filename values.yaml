@@ -13,7 +13,7 @@ jump-app-argocd:
 jump-app-micros:
   enabled: true
   istio:
-    enabled: false
+    enabled: true
     namespace: istio-system
     mtls: true
   cicd:
@@ -110,3 +110,22 @@ global:
           targetPort: 8778
       public: false
       routeTargetPort: http-8443
+    back-quarkus:
+      imagetag: develop
+      multiVersions:
+        enabled: false
+      replicas: 2
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8080
+          protocol: TCP
+          targetPort: 8080
+      public: false
+      routeTargetPort: http-8080
+  
