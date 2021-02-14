@@ -122,8 +122,8 @@ global:
           containerPort: 8080
           protocol: TCP
       servicePorts:
-        http-8080:
-          port: 8080
+        http-8445:
+          port: 8445
           protocol: TCP
           targetPort: 8080
       public: false
