@@ -35,7 +35,7 @@ Optional requirements when Service Mesh is activated:
 
 - Red Hat Openshift Service Mesh Operator installed
 - Kiali Operator installed provided by Red Hat
-- Red Hat Openshift Jager Operator installed
+- Red Hat Openshift Jaeger Operator installed
 - Service Mesh Control Plane Object with default gateways configured (*Please, find object examples in examples folder*)
 - Service Mesh Member Roll Object configured (*Please, find object examples in examples folder*)
 
