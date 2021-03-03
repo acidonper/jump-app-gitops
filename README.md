@@ -174,7 +174,7 @@ oc login -u <user> -p <pass> <ocp_cluster_console>
 - Download submodules
 
 ```$bash
-git submodule update --remote
+git clone --recursive https://github.com/acidonper/jump-app-gitops.git
 ```
 
 - Execute _setup.sh_ script for installing Operator
