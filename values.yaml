@@ -67,7 +67,6 @@ global:
     back-quarkus:
       build: is
       imagestream: quarkus:20.2.0-java11
-      imagestreamNamespace: openshift
       versions:
         - v1
       gitRepo: https://github.com/acidonper/jump-app-quarkus.git
