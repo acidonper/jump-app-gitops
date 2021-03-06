@@ -66,7 +66,7 @@ global:
       type: java
     back-quarkus:
       build: is
-      imagestream: java:latest
+      imagestream: quarkus:20.2.0-java11
       imagestreamNamespace: openshift
       versions:
         - v1
