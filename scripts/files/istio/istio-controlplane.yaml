@@ -4,22 +4,33 @@ metadata:
   namespace: istio-system
   name: basic
 spec:
+  runtime:
+    components:
+      pilot:
+        deployment:
+          replicas: 3
   tracing:
     sampling: 10000
     type: Jaeger
   gateways:
+    enabled: true
     egress:
       enabled: true
-    enabled: true
+      runtime:
+        deployment:
+          replicas: 3
     ingress:
       enabled: true
+      runtime:
+        deployment:
+          replicas: 3
     openshiftRoute:
       enabled: false
   policy:
     type: Istiod
   addons:
     grafana:
-      enabled: false
+      enabled: true
     jaeger:
       install:
         storage:
