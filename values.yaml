@@ -14,7 +14,6 @@ jump-app-argocd:
 
 jump-app-cicd:
   enabled: true
-  appsDomain: apps-crc.testing
   functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
   functTestRepoBranch: master
   functTestMicro: front-javascript
@@ -32,6 +31,7 @@ jump-app-cicd:
 
 # Global variables
 global:
+  appsDomain: apps-crc.testing
   # Jump microservices settings
   apps:
     front-javascript:
