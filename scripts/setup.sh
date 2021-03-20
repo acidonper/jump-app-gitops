@@ -48,7 +48,7 @@ then
 
 fi
 
-if if [[ $@ == *"--serverless"* ]]
+if [[ $@ == *"--serverless"* ]]
 then
 
     echo "Installing Knative operator..."
