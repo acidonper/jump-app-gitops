@@ -14,7 +14,6 @@ jump-app-argocd:
 
 jump-app-cicd:
   enabled: true
-  appsDomain: apps.acidonpe.sandbox1736.opentlc.com
   functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
   functTestRepoBranch: master
   functTestMicro: front-javascript
@@ -32,6 +31,7 @@ jump-app-cicd:
 
 # Global variables
 global:
+  appsDomain: labs.sandbox1562.opentlc.com
   # Jump microservices settings
   apps:
     front-javascript:
@@ -41,12 +41,12 @@ global:
       versions:
         - v1
       type: nodejs
-      gitRepo: https://github.com/acidonper/react-typescrypt-demo.git
+      gitRepo: https://github.com/acidonper/jump-app-typescrypt-react.git
     back-golang:
       build: dockerfile
       versions:
         - v1
-      gitRepo: https://github.com/acidonper/golang-demo.git
+      gitRepo: https://github.com/acidonper/jump-app-golang.git
       type: golang
     back-python:
       build: is
@@ -54,7 +54,7 @@ global:
       imagestreamNamespace: openshift
       versions:
         - v1
-      gitRepo: https://github.com/acidonper/python-demo.git
+      gitRepo: https://github.com/acidonper/jump-app-python.git
       type: python
     back-springboot:
       build: is
@@ -62,5 +62,13 @@ global:
       imagestreamNamespace: openshift
       versions:
         - v1
-      gitRepo: https://github.com/acidonper/java-springboot-demo.git
+      gitRepo: https://github.com/acidonper/jump-app-java-springboot.git
       type: java
+    back-quarkus:
+      build: is
+      imagestream: quarkus:20.2.0-java11
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/jump-app-quarkus.git
+      type: java
+
