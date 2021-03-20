@@ -28,6 +28,9 @@ sleep 60
 echo "Installing Istio operator..."
 oc apply -f ./scripts/files/operators/istio.yaml
 sleep 60
+echo "Installing Knative operator..."
+oc apply -f ./scripts/files/operators/knative.yaml
+sleep 60
 
 # Wait time to install operators
 echo "Waiting for Operators are ready..."

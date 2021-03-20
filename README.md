@@ -85,6 +85,18 @@ sh ./scripts/setup.sh
 sh ./scripts/setup.sh --servicemesh
 ```
 
+**NOTE**: It is possible to deploy Red Hat Serverless solution passing the following parameter to _setup.sh_ script:
+
+```$bash
+sh ./scripts/setup.sh --serverless
+```
+
+**NOTE**: It is possible to deploy Red Hat Serverless and Red Hat Service Mesh solutions passing the following parameter to _setup.sh_ script:
+
+```$bash
+sh ./scripts/setup.sh --serverless --servicemesh
+```
+
 **IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
 
 ### Custom Installation

@@ -26,7 +26,7 @@ echo "Installing Tekton operator..."
 oc apply -f ./scripts/files/operators/tekton.yaml
 sleep 30
 
-if [ ! -z "$1" ] &&  [ $1 == '--servicemesh' ]
+if [[ $@ == *"--servicemesh"* ]]
 then
 
     echo "Creating istio namespace..."
@@ -45,6 +45,24 @@ then
     echo "Installing Istio Control Plane..."
     oc apply -f ./scripts/files/istio/istio-controlplane.yaml
     oc apply -f ./scripts/files/istio/istio-memberrole.yaml
+
+fi
+
+if if [[ $@ == *"--serverless"* ]]
+then
+
+    echo "Installing Knative operator..."
+    oc apply -f ./scripts/files/operators/knative.yaml
+    sleep 30
+
+    # Wait for Knative Operator are ready
+    echo "Waiting for Knative Operators is ready..."
+    sleep 180
+
+    # Aplying Knative Serving and Eventing objects
+    echo "Installing Knative Serving and Eventing integrators..."
+    oc apply -f ./scripts/files/knative/knative-serving.yaml
+    oc apply -f ./scripts/files/knative/knative-eventing.yaml
 
 fi
 
