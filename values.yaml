@@ -128,4 +128,5 @@ global:
           targetPort: 8080
       public: false
       routeTargetPort: http-8080
+      knative: true
   
