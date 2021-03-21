@@ -42,6 +42,7 @@ global:
       public: true
       routeTargetPort: http-8080
       backend: back-golang
+      knative: true
     back-golang:
       imagetag: develop
       multiVersions:
@@ -60,6 +61,7 @@ global:
           targetPort: 8442
       public: true
       routeTargetPort: http-8442
+      # knative: true - NOT SUPPORTED YET
     back-python:
       imagetag: develop
       multiVersions:
@@ -110,6 +112,7 @@ global:
           targetPort: 8778
       public: false
       routeTargetPort: http-8443
+      # knative: true - NOT SUPPORTED YET
     back-quarkus:
       imagetag: develop
       multiVersions:
