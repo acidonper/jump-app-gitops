@@ -42,7 +42,6 @@ global:
       public: true
       routeTargetPort: http-8080
       backend: back-golang
-      knative: true
     back-golang:
       imagetag: develop
       multiVersions:
