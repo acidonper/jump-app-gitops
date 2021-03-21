@@ -62,6 +62,9 @@ global:
       public: true
       routeTargetPort: http-8442
       # knative: true - NOT SUPPORTED YET
+      frontSettings:
+        var: REACT_APP_GOLANG
+        port: 8442
     back-python:
       imagetag: develop
       multiVersions:
@@ -74,12 +77,16 @@ global:
           containerPort: 8080
           protocol: TCP
       servicePorts:
-        http-8080:
+        http-8444:
           port: 8444
           protocol: TCP
           targetPort: 8080
       public: false
-      routeTargetPort: http-8080
+      routeTargetPort: http-8444
+      knative: true
+      frontSettings:
+        var: REACT_APP_PYTHON
+        port: 8444
     back-springboot:
       imagetag: develop
       multiVersions:
@@ -113,6 +120,9 @@ global:
       public: false
       routeTargetPort: http-8443
       # knative: true - NOT SUPPORTED YET
+      frontSettings:
+        var: REACT_APP_SPRINGBOOT
+        port: 8443
     back-quarkus:
       imagetag: develop
       multiVersions:
@@ -132,4 +142,7 @@ global:
       public: false
       routeTargetPort: http-8080
       knative: true
+      frontSettings:
+        var: REACT_APP_QUARKUS
+        port: 8080
   
