@@ -77,7 +77,7 @@ global:
           containerPort: 8080
           protocol: TCP
       servicePorts:
-        http-8080:
+        http-8444:
           port: 8444
           protocol: TCP
           targetPort: 8080
