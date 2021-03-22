@@ -16,6 +16,8 @@ jump-app-micros:
     enabled: true
     namespace: istio-system
     mtls: true
+  knative:
+    enabled: true
   cicd:
     namespace: jump-app-cicd
   
