@@ -11,7 +11,7 @@
 - DEV
 
 ```$bash
-helm template ./charts/jump-app-micros -f values.yaml --namespace jump-app-dev
+helm template . -f values.yaml --namespace jump-app-dev
 ```
 
 ## Author Information

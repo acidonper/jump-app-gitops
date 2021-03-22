@@ -16,6 +16,8 @@ jump-app-micros:
     enabled: false
     namespace: istio-system
     mtls: true
+  knative:
+    enabled: false
   cicd:
     namespace: jump-app-cicd
   
@@ -60,6 +62,9 @@ global:
           targetPort: 8442
       public: true
       routeTargetPort: http-8442
+      frontSettings:
+        var: REACT_APP_GOLANG
+        port: 8442
     back-python:
       imagetag: develop
       multiVersions:
@@ -78,6 +83,9 @@ global:
           targetPort: 8080
       public: false
       routeTargetPort: http-8080
+      frontSettings:
+        var: REACT_APP_PYTHON
+        port: 8444
     back-springboot:
       imagetag: develop
       multiVersions:
@@ -110,3 +118,6 @@ global:
           targetPort: 8778
       public: false
       routeTargetPort: http-8443
+      frontSettings:
+        var: REACT_APP_SPRINGBOOT
+        port: 8443
