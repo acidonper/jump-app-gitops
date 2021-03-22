@@ -44,7 +44,6 @@ then
     # Aplying Controlplane and Memberrole objects
     echo "Installing Istio Control Plane..."
     oc apply -f ./scripts/files/istio/istio-controlplane.yaml
-    oc apply -f ./scripts/files/istio/istio-memberrole.yaml
 
 fi
 
@@ -63,6 +62,10 @@ then
     echo "Installing Knative Serving and Eventing integrators..."
     oc apply -f ./scripts/files/knative/knative-serving.yaml
     oc apply -f ./scripts/files/knative/knative-eventing.yaml
+
+    # Apply Labels
+    oc label namespace knative-serving serving.knative.openshift.io/system-namespace=true
+    oc label namespace knative-serving-ingress serving.knative.openshift.io/system-namespace=true
 
 fi
 
