@@ -5,7 +5,6 @@
 #
 ##
 
-
 # Subcharts status
 jump-app-cicd:
   enabled: false
@@ -13,6 +12,8 @@ jump-app-argocd:
   enabled: false
 jump-app-micros:
   enabled: true
+  knative:
+    enabled: true
   istio:
     enabled: true
     namespace: istio-system
@@ -61,6 +62,9 @@ global:
           targetPort: 8442
       public: true
       routeTargetPort: http-8442
+      frontSettings:
+        var: REACT_APP_GOLANG
+        port: 8442
     back-python:
       imagetag: develop
       multiVersions:
@@ -73,12 +77,15 @@ global:
           containerPort: 8080
           protocol: TCP
       servicePorts:
-        http-8080:
+        http-8444:
           port: 8444
           protocol: TCP
           targetPort: 8080
       public: false
-      routeTargetPort: http-8080
+      routeTargetPort: http-8444
+      frontSettings:
+        var: REACT_APP_PYTHON
+        port: 8444
     back-springboot:
       imagetag: develop
       multiVersions:
@@ -111,3 +118,6 @@ global:
           targetPort: 8778
       public: false
       routeTargetPort: http-8443
+      frontSettings:
+        var: REACT_APP_SPRINGBOOT
+        port: 8443
