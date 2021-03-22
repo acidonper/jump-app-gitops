@@ -84,7 +84,7 @@ global:
           protocol: TCP
           targetPort: 8080
       public: false
-      routeTargetPort: http-8080
+      routeTargetPort: http-8444
       frontSettings:
         var: REACT_APP_PYTHON
         port: 8444
