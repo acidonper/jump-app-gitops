@@ -5,8 +5,9 @@ metadata:
   name: knative
   namespace: openshift-operators
 spec:
-  channel: '4.7'
+  channel: stable
   installPlanApproval: Automatic
   name: serverless-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: serverless-operator.v1.14.0

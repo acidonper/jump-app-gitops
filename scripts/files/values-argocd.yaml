@@ -12,10 +12,10 @@ apps:
     enabled: true
   jump-app-pro:
     branch: feature/jump-app-pro
-    enabled: true
+    enabled: false
   jump-app-pre:
     branch: feature/jump-app-pre
-    enabled: true
+    enabled: false
   jump-app-dev:
     branch: feature/jump-app-dev 
     enabled: true

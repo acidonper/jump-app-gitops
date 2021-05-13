@@ -10,6 +10,7 @@ spec:
   name: kiali-ossm
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: kiali-operator.v1.24.7
 
 ---
 apiVersion: operators.coreos.com/v1alpha1
@@ -23,6 +24,7 @@ spec:
   name: jaeger-product
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: jaeger-operator.v1.20.3
 
 ---
 apiVersion: operators.coreos.com/v1alpha1
@@ -35,4 +37,5 @@ spec:
   installPlanApproval: Automatic
   name: servicemeshoperator
   source: redhat-operators
-  sourceNamespace: openshift-marketplace 
+  sourceNamespace: openshift-marketplace
+  startingCSV: serverless-operator.v1.14.0 
