@@ -4,7 +4,7 @@
 ##
 
 ## Params
-NS=test-cicd
+NS=jump-app-cicd
 REGISTRY=quay.io/acidonpe
 
 ## Imagestreams Jump App
@@ -13,6 +13,8 @@ back-springboot
 back-quarkus
 back-python
 front-javascript"
+
+oc new-project $NS
 
 ## Import Jump App images
 for i in $IS
