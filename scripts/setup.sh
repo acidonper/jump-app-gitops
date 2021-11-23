@@ -22,6 +22,7 @@ oc new-project gitops-argocd
 echo "Installing ArgoCD operator..."
 oc apply -f ./scripts/files/operators/argocd.yaml
 sleep 30
+
 echo "Installing Tekton operator..."
 oc apply -f ./scripts/files/operators/tekton.yaml
 sleep 30
@@ -32,18 +33,25 @@ then
     echo "Creating istio namespace..."
     # Create Istio Namespace
     oc new-project istio-system
+    oc new-project mesh-test
 
     echo "Installing Istio operator..."
     oc apply -f ./scripts/files/operators/istio.yaml
-    sleep 30
 
     # Wait for Istio Operator are ready
     echo "Waiting for Istio Operators is ready..."
-    sleep 180
+    oc get pods -n openshift-operators | grep "kiali" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
+    oc get pods -n openshift-operators | grep "jaeger" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
+    oc get pods -n openshift-operators | grep "istio" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
 
     # Aplying Controlplane and Memberrole objects
-    echo "Installing Istio Control Plane..."
+    echo "Installing Istio control plane..."
     oc apply -f ./scripts/files/istio/istio-controlplane.yaml
+    oc apply -f ./scripts/files/istio/istio-smmr.yaml
+
+    # Wait for Istio Operator are ready
+    echo "Waiting for Istio control plane is ready..."
+    oc wait --for condition=Ready -n istio-system smmr/default --timeout 300s
 
 fi
 
