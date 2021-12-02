@@ -37,6 +37,7 @@ then
 
     echo "Installing Istio operator..."
     oc apply -f ./scripts/files/operators/istio.yaml
+    sleep 30
 
     # Wait for Istio Operator are ready
     echo "Waiting for Istio Operators is ready..."

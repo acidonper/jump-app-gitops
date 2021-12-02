@@ -1,0 +1,23 @@
+# Stablish a connection from cluster2-mesh1 to cluster1-mesh1
+kind: ServiceMeshPeer
+apiVersion: federation.maistra.io/v1
+metadata:
+  name: cluster1-mesh1
+  # namespace: cluster2-mesh1-system
+spec:
+  remote:
+    addresses:
+    - MESH1_ADDRESS
+    discoveryPort: 8188
+    servicePort: 15443
+  gateways:
+    ingress:
+      name: cluster1-mesh1-ingress
+    egress:
+      name: cluster1-mesh1-egress
+  security:
+    trustDomain: cluster1-mesh1.local
+    clientID: cluster1-mesh1.local/ns/cluster1-mesh1-system/sa/cluster2-mesh1-egress-service-account
+    certificateChain:
+      kind: ConfigMap
+      name: cluster1-mesh1-ca-root-cert

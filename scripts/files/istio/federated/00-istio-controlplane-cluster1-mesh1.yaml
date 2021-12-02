@@ -1,0 +1,88 @@
+# Define cluster1-mesh1 control plane
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  name: cluster1-mesh1
+  # namespace: cluster1-mesh1-system
+spec:
+  version: v2.1
+  runtime:
+    components:
+      pilot:
+        deployment:
+          replicas: 1
+  tracing:
+    sampling: 10000
+    type: Jaeger
+  policy:
+    type: Istiod
+  proxy:
+    accessLogging:
+      file:
+        name: /dev/stdout
+  addons:
+    grafana:
+      enabled: true
+    jaeger:
+      install:
+        storage:
+          type: Memory
+    kiali:
+      enabled: true
+    prometheus:
+      enabled: true
+  # cluster:
+  #   name: cluster1-mesh1
+  #   network: cluster1-mesh1-net1
+  gateways:
+    # enabled: true
+    # egress:
+    #   enabled: true
+    #   runtime:
+    #     deployment:
+    #       replicas: 1
+    # ingress:
+    #   enabled: true
+    #   runtime:
+    #     deployment:
+    #       replicas: 1
+    # openshiftRoute:
+    #   enabled: false
+    additionalEgress:
+      cluster2-mesh1-egress:
+        enabled: true
+        requestedNetworkView:
+        - network-cluster2-mesh1
+        routerMode: sni-dnat
+        service:
+          metadata:
+            labels:
+              # federation.maistra.io/proxy: egress-cluster2-mesh1
+              federation.maistra.io/egress-for: cluster2-mesh1
+          ports:
+          - port: 15443
+            name: tls
+          - port: 8188
+            name: http-discovery  #note HTTP here
+    additionalIngress:
+      cluster2-mesh1-ingress:
+        enabled: true
+        routerMode: sni-dnat
+        service:
+          type: LoadBalancer
+          metadata:
+            labels:
+              # federation.maistra.io/proxy: ingress-cluster2-mesh1
+              federation.maistra.io/ingress-for: cluster2-mesh1
+            annotations:
+              service.beta.kubernetes.io/aws-load-balancer-type: nlb
+          ports:
+          - port: 15443
+            name: tls
+          - port: 8188
+            name: https-discovery  #note HTTPS here
+  security:
+    trust:
+      domain: cluster1-mesh1.local
+  # telemetry:
+  #   type: Istiod

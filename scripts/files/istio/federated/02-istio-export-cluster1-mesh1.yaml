@@ -1,0 +1,11 @@
+kind: ExportedServiceSet
+apiVersion: federation.maistra.io/v1
+metadata:
+  name: cluster2-mesh1
+  # namespace: cluster1-mesh1-system
+spec:
+  exportRules:
+    - type: NameSelector
+      nameSelector:
+        namespace: jump-app-dev
+        name: "*"
