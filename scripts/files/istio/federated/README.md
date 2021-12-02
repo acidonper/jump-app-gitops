@@ -15,7 +15,7 @@ From an overall process point of view, the procedure includes the following step
 - Create the ExportedServiceSet object in the cluster that has the respective services
 - Import the ImportedServiceSet object in the cluster that has to consume the respective services
 
-Please, review **setup_istio_federated.sh** to execute the procedure automatically in a AWS scenario.
+Please, review [setup_istio_federated.sh](../../../extra/setup_istio_federated.sh) to execute the procedure automatically in a AWS scenario.
 
 ## Extra
 
