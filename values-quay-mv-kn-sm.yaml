@@ -13,23 +13,28 @@ jump-app-argocd:
 jump-app-micros:
   enabled: true
   istio:
-    enabled: false
+    enabled: true
     namespace: istio-system
     mtls: true
   knative:
-    enabled: false
+    enabled: true
   cicd:
     namespace: jump-app-cicd
   
 # Global variables
 global:
-  appsDomain: apps.sanlabs.sandbox506.opentlc.com
+  appsDomain: apps.acidonpe.sandbox167.opentlc.com
   apps:
     front-javascript:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
+      imagerepo: quay.io/acidonpe/jump-app-front-javascript
+      imagetag: latest
+      multiVersions: 
+        enabled: true
+        imagetag: latest
+        # Traffic splitting is managed by Istio
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 2
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -45,10 +50,15 @@ global:
       routeTargetPort: http-8080
       backend: back-golang
     back-golang:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
+      imagerepo: quay.io/acidonpe/jump-app-back-golang
+      imagetag: latest
+      multiVersions: 
+        enabled: true
+        imagetag: latest
+        # Traffic splitting is managed by Istio
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 2
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -66,10 +76,15 @@ global:
         var: REACT_APP_GOLANG
         port: 8442
     back-python:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
+      imagerepo: quay.io/acidonpe/jump-app-back-python
+      imagetag: latest
+      multiVersions: 
+        enabled: true
+        imagetag: latest
+        # Traffic splitting is managed by Istio
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 2
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -87,14 +102,19 @@ global:
         var: REACT_APP_PYTHON
         port: 8444
     back-springboot:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
+      imagerepo: quay.io/acidonpe/jump-app-back-springboot-grpc
+      imagetag: latest
+      multiVersions: 
+        enabled: true
+        imagetag: latest
+        # Traffic splitting is managed by Istio
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 2
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
-        http:
+        https:
           containerPort: 8443
           protocol: TCP
       servicePorts:
@@ -108,10 +128,15 @@ global:
         var: REACT_APP_SPRINGBOOT
         port: 8443
     back-quarkus:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
+      imagerepo: quay.io/acidonpe/jump-app-back-quarkus
+      imagetag: latest
+      multiVersions: 
+        enabled: true
+        imagetag: latest
+        # Traffic splitting is managed by Istio
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 2
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -125,7 +150,7 @@ global:
           targetPort: 8080
       public: false
       routeTargetPort: http-8080
-      knative: false
+      knative: true
       frontSettings:
         var: REACT_APP_QUARKUS
         port: 8445
