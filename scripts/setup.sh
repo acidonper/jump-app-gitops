@@ -37,6 +37,7 @@ then
     echo "Creating istio namespace..."
     # Create Istio Namespace
     oc new-project istio-system
+    oc label namespace istio-system argocd.argoproj.io/managed-by=gitops-argocd --overwrite
     oc new-project mesh-test
 
     echo "Installing Istio operator..."
