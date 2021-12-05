@@ -7,10 +7,11 @@
 As probably known, this automated "tool" is based on helm and tries to integrate the following solutions:
 
 - Red Hat Openshift Container Platform 4 (\*Kubernetes)
-- Multi programing language microservices (Javascript, Golang, Python and Java)
-- GitOps solution, based on ArgoCD.
-- CI/CD strategy, based Tekton.
-- Service Mesh architecture, based on Istio.
+- Multi programing language microservices (Javascript, Golang, Python, Quarkus and Java)
+- GitOps solution based on ArgoCD
+- CI/CD strategy based Tekton
+- Service Mesh architecture based on Istio
+- Serverless integration based on Knative
 
 This repository was created to include all automated procedures to achieve the following goals:
 
@@ -18,7 +19,8 @@ This repository was created to include all automated procedures to achieve the f
 - Install required ArgoCD objects (ArgoCD Server, Route, Rolebindings and Applications)
 - Deploy CI/CD objects in jump-app-cicd namespace (Imagestreams, BuildConfigs, Tekton Pipelines, etc)
 - Deploy _Jump App's_ microservices in each environment/namespace
-- Create Service Mesh objects when Istio support is enabled.
+- Create Service Mesh objects when Istio support is enabled
+- Create Serverless services when Knative is enabled
 
 _NOTE:_ It is important to know that it is possible to activate/deactivate features through variable _enabled_ defined for each sub-chart in the global _values.yaml_ file.
 
@@ -26,20 +28,19 @@ _NOTE:_ It is important to know that it is possible to activate/deactivate featu
 
 In order to start working with this repository, it is required:
 
-- A Red Hat Openshift Container Platform Cluster +4.5
-- ArgoCD Operator installed
-- Red Hat Openshift Pipelines Operator installed
+- A Red Hat Openshift Container Platform Cluster +4.7
 - Helm client installed in the local machine (Please follow https://helm.sh/docs/intro/install/ for more information)
 
-Optional requirements when Service Mesh is activated:
+The setting up process manage the following dependencies automatically depending on the argument provided:
 
-- Red Hat Openshift Service Mesh Operator installed
-- Kiali Operator installed provided by Red Hat
-- Red Hat Openshift Jaeger Operator installed
-- Service Mesh Control Plane Object with default gateways configured (*Please, find object examples in examples folder*)
-- Service Mesh Member Roll Object configured (*Please, find object examples in examples folder*)
-
-IMPORTANT: Quick Start section (_setup.sh_ script) include the procedure to install the previous requirements automatically with the exception of *Red Hat Openshift Container Platform Cluster +4.5* and *Helm* in your local machine.
+- Install ArgoCD Operator
+- Install Red Hat Openshift Pipelines Operator
+- Install Red Hat Serverless Operator
+- Install Red Hat Openshift Service Mesh Operator
+- Install Kiali Operator installed provided by Red Hat
+- Install Red Hat Openshift Jaeger Operator installed
+- Apply _Service Mesh Control Plane_ Object with default configuration (*Please, find object examples in scripts/files/istio folder*)
+- Apply _Service Mesh Member Roll_ Object with a test namespace (*Please, find object examples in scripts/files/istio folder*)
 
 ## Multi Branch
 
@@ -213,6 +214,7 @@ oc get route argocd-server -n gitops-argocd
 argocd-gitops-argocd.apps.<mydomain>
 ```
 
+NOTE: It is possible to access via Openshift OAuth
 ### ArgoCD CLI
 
 - Auth ArgoCD Server using CLI

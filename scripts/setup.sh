@@ -11,10 +11,14 @@ sleep 10
 
 # Create Jump App Namespaces
 oc new-project jump-app-dev
+oc label namespace jump-app-dev argocd.argoproj.io/managed-by=gitops-argocd --overwrite
 oc new-project jump-app-pre
+oc label namespace jump-app-pre argocd.argoproj.io/managed-by=gitops-argocd --overwrite
 oc new-project jump-app-pro
+oc label namespace jump-app-pro argocd.argoproj.io/managed-by=gitops-argocd --overwrite
 # Create CI/CD Namespace 
 oc new-project jump-app-cicd
+oc label namespace jump-app-cicd argocd.argoproj.io/managed-by=gitops-argocd --overwrite
 # Create ArgoCD Namespace
 oc new-project gitops-argocd
 
@@ -44,6 +48,7 @@ then
     oc get pods -n openshift-operators | grep "kiali" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
     oc get pods -n openshift-operators | grep "jaeger" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
     oc get pods -n openshift-operators | grep "istio" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
+    sleep 30
 
     # Aplying Controlplane and Memberrole objects
     echo "Installing Istio control plane..."
@@ -71,6 +76,7 @@ then
     echo "Installing Knative Serving and Eventing integrators..."
     oc apply -f ./scripts/files/knative/knative-serving.yaml
     oc apply -f ./scripts/files/knative/knative-eventing.yaml
+    sleep 30
 
     # Apply Labels
     oc label namespace knative-serving serving.knative.openshift.io/system-namespace=true

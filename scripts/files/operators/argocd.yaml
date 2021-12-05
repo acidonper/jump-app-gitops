@@ -1,23 +1,15 @@
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: gitops-argocd
-  namespace: gitops-argocd
-spec:
-  targetNamespaces:
-  - gitops-argocd
-
----
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: gitops-argocd
-  namespace: gitops-argocd 
+  name: openshift-gitops-operator
+  namespace: openshift-operators
 spec:
-  channel: alpha
-  name: argocd-operator
-  source: community-operators
-  sourceNamespace: openshift-marketplace 
+  channel: stable
+  installPlanApproval: Automatic
+  name: openshift-gitops-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+
 
 
   
