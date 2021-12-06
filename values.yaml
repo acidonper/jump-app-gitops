@@ -1,0 +1,59 @@
+jump-app-micros:
+  enabled: false
+
+jump-app-argocd:
+  enabled: false
+
+jump-app-cicd:
+  namespaceDev: jump
+  namespacePre: mock-value-pre
+  namespacePro: mock-value-pro
+  enabled: true
+  functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
+  functTestRepoBranch: master
+  functTestMicro: front-javascript
+  pipeTypes:
+    - nodejs
+    - golang
+    - python
+    - java
+  gitBranchPro: master
+  gitBranchDev: develop
+  sa: tekton-deployments-admin
+
+# Global variables
+global:
+  appsDomain: apps.cluster-1a4d.1a4d.sandbox259.opentlc.com
+  # Jump microservices settings
+  apps:
+    front-javascript:
+      build: is
+      imagestream: nodejs:latest
+      imagestreamNamespace: openshift
+      versions:
+        - v1
+      type: nodejs
+      gitRepo: https://github.com/acidonper/jump-app-typescrypt-react.git
+    back-golang:
+      build: dockerfile
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/jump-app-golang.git
+      type: golang
+    back-python:
+      build: is
+      imagestream: python:latest
+      imagestreamNamespace: openshift
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/jump-app-python.git
+      type: python
+    back-springboot:
+      build: is
+      imagestream: java:latest
+      imagestreamNamespace: openshift
+      versions:
+        - v1
+      gitRepo: https://github.com/acidonper/jump-app-java-springboot.git
+      type: java
+
