@@ -7,8 +7,8 @@ version: 0.1.0
 appVersion: 0.1.16
 
 mantainers:
-  - name: Asier Cidon
-    email: acidonpe@redhat.com
+  - name: MS
+    email: maschind@redhat.com
 
 dependencies:
   - name: jump-app-micros
