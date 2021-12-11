@@ -22,14 +22,26 @@ oc label namespace jump-app-cicd argocd.argoproj.io/managed-by=gitops-argocd --o
 # Create ArgoCD Namespace
 oc new-project gitops-argocd
 
+waitoperatorpod() {
+  sleep 10
+  oc get pods -n openshift-operators | grep ${1} | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
+  sleep 20
+}
+
+waitknativeserving() {
+  sleep 10
+  oc get pods -n knative-serving | grep ${1} | awk '{print "oc wait --for condition=Ready -n knative-serving pod/" $1 " --timeout 300s"}' | sh
+  sleep 20
+}
+
 # Install Operators
 echo "Installing ArgoCD operator..."
 oc apply -f ./scripts/files/operators/argocd.yaml
-sleep 30
+waitoperatorpod gitops
 
 echo "Installing Tekton operator..."
 oc apply -f ./scripts/files/operators/tekton.yaml
-sleep 30
+waitoperatorpod pipelines
 
 if [[ $@ == *"--servicemesh"* ]]
 then
@@ -46,10 +58,9 @@ then
 
     # Wait for Istio Operator are ready
     echo "Waiting for Istio Operators is ready..."
-    oc get pods -n openshift-operators | grep "kiali" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
-    oc get pods -n openshift-operators | grep "jaeger" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
-    oc get pods -n openshift-operators | grep "istio" | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
-    sleep 30
+    waitoperatorpod kiali
+    waitoperatorpod jaeger
+    waitoperatorpod istio
 
     # Aplying Controlplane and Memberrole objects
     echo "Installing Istio control plane..."
@@ -71,13 +82,20 @@ then
 
     # Wait for Knative Operator are ready
     echo "Waiting for Knative Operators is ready..."
-    sleep 180
+    waitoperatorpod knative-operator
+    waitoperatorpod knative-openshift-ingress
+    waitoperatorpod knative-openshift
 
     # Aplying Knative Serving and Eventing objects
     echo "Installing Knative Serving and Eventing integrators..."
     oc apply -f ./scripts/files/knative/knative-serving.yaml
-    oc apply -f ./scripts/files/knative/knative-eventing.yaml
+    # oc apply -f ./scripts/files/knative/knative-eventing.yaml
     sleep 30
+    waitknativeserving activator
+    waitknativeserving autoscaler
+    waitknativeserving weebhook
+    waitknativeserving domain
+    waitknativeserving controller
 
     # Apply Labels
     oc label namespace knative-serving serving.knative.openshift.io/system-namespace=true
@@ -85,15 +103,10 @@ then
 
 fi
 
-# Wait time to install operators
-echo "Waiting for Operators are ready..."
-sleep 60
-
 # Apply chart template
 echo "Creating ArgoCD Server, project, CI/CD Application and so on..."
 oc project gitops-argocd
 helm template ./charts/jump-app-argocd -f ./scripts/files/values-argocd.yaml --debug --namespace gitops-argocd | oc apply -f -
-sleep 10
 
 # Notifications
 read -p "Please configure GitHub weebhooks in order to notify code changes to Tekton automatically..."
