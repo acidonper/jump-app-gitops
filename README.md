@@ -20,9 +20,9 @@ This repository was created to include all automated procedures to achieve the f
 - Deploy CI/CD objects in jump-app-cicd namespace (Imagestreams, BuildConfigs, Tekton Pipelines, etc)
 - Deploy _Jump App's_ microservices in each environment/namespace
 - Create Service Mesh objects when Istio support is enabled
-- Create Serverless services when Knative is enabled
+- Create Serverless services when Knative support is enabled
 
-_NOTE:_ It is important to know that it is possible to activate/deactivate features through variable _enabled_ defined for each sub-chart in the global _values.yaml_ file.
+_NOTE:_ It is important to know that it is possible to activate/deactivate features through the variable _enabled_ defined for each sub-chart in the global _values.yaml_ file.
 
 ## Requisites
 
@@ -38,7 +38,7 @@ The setting up process manage the following dependencies automatically depending
 - Install Red Hat Serverless Operator
 - Install Red Hat Openshift Service Mesh Operator
 - Install Kiali Operator installed provided by Red Hat
-- Install Red Hat Openshift Jaeger Operator installed
+- Install Red Hat Openshift Jaeger Operator
 - Apply _Service Mesh Control Plane_ Object with default configuration (*Please, find object examples in scripts/files/istio folder*)
 - Apply _Service Mesh Member Roll_ Object with a test namespace (*Please, find object examples in scripts/files/istio folder*)
 
@@ -235,6 +235,16 @@ argocd app list
 ```$bash
 argocd app sync jump-app-dev
 ```
+
+## Service Mesh
+
+Red Hat Service Mesh is installed to implement a mesh in Openshift based on Istio. The mesh architecture in this implementation has been design for implementing a unified control plane in a single Openshift cluster.
+
+### Service Mesh Federation
+
+When it is required to implement multi cluster environments to provide high availability and/or balance the load between a set of clusters, it is possible to deploy multi mesh architectures using *mesh federation*. 
+
+Please visit the following [link](scripts/files/istio/federated/README.md) for more information about *Red Hat Service Mesh Federation*.
 
 ## Charts Tests
 
