@@ -33,7 +33,7 @@ global:
         # Traffic splitting is managed by Istio
         v1Traffic: 50
         v2Traffic: 50
-      replicas: 2
+      replicas: 1
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -56,7 +56,7 @@ global:
         # Traffic splitting is managed by Istio
         v1Traffic: 50
         v2Traffic: 50
-      replicas: 2
+      replicas: 1
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -81,7 +81,7 @@ global:
         # Traffic splitting is managed by Istio
         v1Traffic: 50
         v2Traffic: 50
-      replicas: 2
+      replicas: 1
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
@@ -106,7 +106,7 @@ global:
         # Traffic splitting is managed by Istio
         v1Traffic: 50
         v2Traffic: 50
-      replicas: 2
+      replicas: 1
       envVars:
         APP_REF_NAME: jump-app
       containerPorts:
