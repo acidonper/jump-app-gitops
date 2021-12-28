@@ -21,16 +21,27 @@ oc label namespace jump-app-pro argocd.argoproj.io/managed-by=openshift-gitops -
 oc new-project jump-app-cicd
 oc label namespace jump-app-cicd argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 
+waitpodup(){
+  x=1
+  test=""
+  while [ -z "${test}" ]
+  do 
+    echo "Waiting ${x} times for pod ${1} in ns ${2}" $(( x++ ))
+    sleep 1 
+    test=$(oc get po -n ${2} | grep ${1})
+  done
+}
+
 waitoperatorpod() {
-  sleep 10
-  oc get pods -n openshift-operators | grep ${1} | awk '{print "oc wait --for condition=Ready -n openshift-operators pod/" $1 " --timeout 300s"}' | sh
-  sleep 20
+  NS=openshift-operators
+  waitpodup $1 ${NS}
+  oc get pods -n ${NS} | grep ${1} | awk '{print "oc wait --for condition=Ready -n '${NS}' pod/" $1 " --timeout 300s"}' | sh
 }
 
 waitknativeserving() {
-  sleep 10
-  oc get pods -n knative-serving | grep ${1} | awk '{print "oc wait --for condition=Ready -n knative-serving pod/" $1 " --timeout 300s"}' | sh
-  sleep 20
+  NS=knative-serving
+  waitpodup ${1} ${NS}
+  oc get pods -n ${NS} | grep ${1} | awk '{print "oc wait --for condition=Ready -n '${NS}' pod/" $1 " --timeout 300s"}' | sh
 }
 
 # Install Operators
