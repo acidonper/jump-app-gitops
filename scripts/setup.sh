@@ -11,16 +11,15 @@ sleep 10
 
 # Create Jump App Namespaces
 oc new-project jump-app-dev
-oc label namespace jump-app-dev argocd.argoproj.io/managed-by=gitops-argocd --overwrite
+oc label namespace jump-app-dev argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 oc new-project jump-app-pre
-oc label namespace jump-app-pre argocd.argoproj.io/managed-by=gitops-argocd --overwrite
+oc label namespace jump-app-pre argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 oc new-project jump-app-pro
-oc label namespace jump-app-pro argocd.argoproj.io/managed-by=gitops-argocd --overwrite
+oc label namespace jump-app-pro argocd.argoproj.io/managed-by=openshift-gitops --overwrite
+
 # Create CI/CD Namespace 
 oc new-project jump-app-cicd
-oc label namespace jump-app-cicd argocd.argoproj.io/managed-by=gitops-argocd --overwrite
-# Create ArgoCD Namespace
-oc new-project gitops-argocd
+oc label namespace jump-app-cicd argocd.argoproj.io/managed-by=openshift-gitops --overwrite
 
 waitoperatorpod() {
   sleep 10
@@ -49,7 +48,7 @@ then
     echo "Creating istio namespace..."
     # Create Istio Namespace
     oc new-project istio-system
-    oc label namespace istio-system argocd.argoproj.io/managed-by=gitops-argocd --overwrite
+    oc label namespace istio-system argocd.argoproj.io/managed-by=openshift-gitops --overwrite
     oc new-project mesh-test
 
     echo "Installing Istio operator..."
@@ -105,8 +104,8 @@ fi
 
 # Apply chart template
 echo "Creating ArgoCD Server, project, CI/CD Application and so on..."
-oc project gitops-argocd
-helm template ./charts/jump-app-argocd -f ./scripts/files/values-argocd.yaml --debug --namespace gitops-argocd | oc apply -f -
+oc project openshift-gitops
+helm template ./charts/jump-app-argocd -f ./scripts/files/values-argocd.yaml --debug --namespace openshift-gitops | oc apply -f -
 
 # Notifications
 read -p "Please configure GitHub weebhooks in order to notify code changes to Tekton automatically..."
