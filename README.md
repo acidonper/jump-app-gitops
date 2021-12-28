@@ -15,7 +15,7 @@ As probably known, this automated "tool" is based on helm and tries to integrate
 
 This repository was created to include all automated procedures to achieve the following goals:
 
-- Create required namespaces in Kubernetes (gitops-argocd, istio-system, jump-app-cicd, jump-app-dev, jump-app-pre and jump-app-pro)
+- Create required namespaces in Kubernetes (istio-system, jump-app-cicd, jump-app-dev, jump-app-pre and jump-app-pro)
 - Install required ArgoCD objects (ArgoCD Server, Route, Rolebindings and Applications)
 - Deploy CI/CD objects in jump-app-cicd namespace (Imagestreams, BuildConfigs, Tekton Pipelines, etc)
 - Deploy _Jump App's_ microservices in each environment/namespace
@@ -98,7 +98,7 @@ sh ./scripts/setup.sh --serverless
 sh ./scripts/setup.sh --serverless --servicemesh
 ```
 
-**IMPORTANT**: By default, some namespaces will be created (_gitops-argocd_, _istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
+**IMPORTANT**: By default, some namespaces will be created (_istio-system_, _jump-app-cicd_, _jump-app-dev_, _jump-app-pre_ and _jump-app-pro_). If it is required to modify their names, take special attention to modify associated variables and define the new names correctly.
 
 ### Custom Installation
 
@@ -209,9 +209,9 @@ Once ArgoCD Server is installed, it is possible access ArgoCD Web UI follow next
 
 ```$bash
 oc login
-oc get secret argocd-cluster -o jsonpath='{.data.admin\.password}' -n gitops-argocd | base64 -d
-oc get route argocd-server -n gitops-argocd
-argocd-gitops-argocd.apps.<mydomain>
+oc get secret openshift-gitops-cluster -o jsonpath='{.data.admin\.password}' -n openshift-gitops | base64 -d
+oc get route openshift-gitops-server -n openshift-gitops
+openshift-gitops-server-openshift-gitops.apps.<mydomain>
 ```
 
 NOTE: It is possible to access via Openshift OAuth
@@ -251,7 +251,7 @@ Please visit the following [link](scripts/files/istio/federated/README.md) for m
 ### Jump App ArgoCD
 
 ```$bash
-helm template ./charts/jump-app-argocd -f examples/local/values-jump-app-argocd.yaml --debug --namespace gitops-argocd
+helm template ./charts/jump-app-argocd -f examples/local/values-jump-app-argocd.yaml --debug --namespace openshift-gitops
 ```
 
 ### Jump App CI/CD
