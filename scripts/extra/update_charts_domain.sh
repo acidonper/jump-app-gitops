@@ -24,10 +24,10 @@ do
   git checkout $i
   if [ "$OS" = 'Darwin' ]; then
         # for MacOS
-        sed -i '' -e "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values.yaml
+        sed -i '' -e "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values*.yaml
     else
         # for Linux and Windows
-        sed -i "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values.yaml
+        sed -i "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values*.yaml
     fi
   git add values.yaml
   git commit -m "Added ${APPS_DOMAIN} domain in appsDomain parameter"
