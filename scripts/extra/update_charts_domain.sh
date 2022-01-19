@@ -29,7 +29,7 @@ do
         # for Linux and Windows
         sed -i "s/appsDomain: .*$/appsDomain: ${APPS_DOMAIN}/" values*.yaml
     fi
-  git add values.yaml
+  git add values*.yaml
   git commit -m "Added ${APPS_DOMAIN} domain in appsDomain parameter"
   git push origin $i
   echo ""
