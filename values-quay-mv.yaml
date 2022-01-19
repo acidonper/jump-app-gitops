@@ -102,7 +102,7 @@ global:
         var: REACT_APP_PYTHON
         port: 8444
     back-springboot:
-      imagerepo: quay.io/acidonpe/jump-app-back-springboot-grpc
+      imagerepo: quay.io/acidonpe/jump-app-back-springboot
       imagetag: latest
       multiVersions: 
         enabled: true
