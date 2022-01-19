@@ -1,0 +1,135 @@
+##
+# Jump App Microservices Chart values
+#
+# DEV environment
+#
+##
+
+# Subcharts status
+jump-app-cicd:
+  enabled: false
+jump-app-argocd:
+  enabled: false
+jump-app-micros:
+  enabled: true
+  istio:
+    enabled: true
+    namespace: istio-system
+    mtls: true
+  knative:
+    enabled: false
+  cicd:
+    namespace: jump-app-cicd
+  
+# Global variables
+global:
+  appsDomain: apps.acidonpe.sandbox167.opentlc.com
+  apps:
+    front-javascript:
+      imagerepo: quay.io/acidonpe/jump-app-front-javascript
+      imagetag: latest
+      multiVersions: 
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 3000
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8080
+          protocol: TCP
+          targetPort: 3000
+      public: true
+      routeTargetPort: http-8080
+      backend: back-golang
+    back-golang:
+      imagerepo: quay.io/acidonpe/jump-app-back-golang
+      imagetag: latest
+      multiVersions: 
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8442
+          protocol: TCP
+      servicePorts:
+        http-8442:
+          port: 8442
+          protocol: TCP
+          targetPort: 8442
+      public: true
+      routeTargetPort: http-8442
+      frontSettings:
+        var: REACT_APP_GOLANG
+        port: 8442
+    back-python:
+      imagerepo: quay.io/acidonpe/jump-app-back-python
+      imagetag: latest
+      multiVersions: 
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+      servicePorts:
+        http-8444:
+          port: 8444
+          protocol: TCP
+          targetPort: 8080
+      public: false
+      routeTargetPort: http-8444
+      frontSettings:
+        var: REACT_APP_PYTHON
+        port: 8444
+    back-springboot:
+      imagerepo: quay.io/acidonpe/jump-app-back-springboot-grpc
+      imagetag: latest
+      multiVersions: 
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        https:
+          containerPort: 8443
+          protocol: TCP
+      servicePorts:
+        http-8443:
+          port: 8443
+          protocol: TCP
+          targetPort: 8443
+      public: false
+      routeTargetPort: http-8443
+      frontSettings:
+        var: REACT_APP_SPRINGBOOT
+        port: 8443
+    back-quarkus:
+      imagerepo: quay.io/acidonpe/jump-app-back-quarkus
+      imagetag: latest
+      multiVersions: 
+        enabled: false
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+      servicePorts:
+        http-8445:
+          port: 8445
+          protocol: TCP
+          targetPort: 8080
+      public: false
+      routeTargetPort: http-8080
+      frontSettings:
+        var: REACT_APP_QUARKUS
+        port: 8445
