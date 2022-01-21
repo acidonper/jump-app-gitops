@@ -1,4 +1,0 @@
-[submodule "charts"]
-	path = charts
-	url = https://github.com/acidonper/jump-app-helm-charts.git
-	branch = master

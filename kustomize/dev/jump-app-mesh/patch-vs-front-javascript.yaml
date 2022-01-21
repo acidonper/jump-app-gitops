@@ -1,0 +1,3 @@
+- op: add
+  path: /spec/hosts/-
+  value: "front-javascript-istio-system.apps.cluster1.sandbox1324.opentlc.com"

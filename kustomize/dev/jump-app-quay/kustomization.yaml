@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - github.com/acidonper/jump-app-kustomize/micros/?ref=master
+configMapGenerator:
+  - name: react-envs
+    behavior: merge
+    literals:
+    - REACT_APP_BACK=https://back-golang-kustomize-quay-test.apps.cluster1.sandbox1324.opentlc.com/jump
+images:
+- name: image-registry.openshift-image-registry.svc:5000/jump-app-cicd/front-javascript:develop
+  newName: quay.io/acidonpe/jump-app-front-javascript
+  newTag: latest
+- name: image-registry.openshift-image-registry.svc:5000/jump-app-cicd/back-golang:develop
+  newName: quay.io/acidonpe/jump-app-back-golang
+  newTag: latest
+- name: image-registry.openshift-image-registry.svc:5000/jump-app-cicd/back-python:develop
+  newName: quay.io/acidonpe/jump-app-back-python
+  newTag: latest
+- name: image-registry.openshift-image-registry.svc:5000/jump-app-cicd/back-springboot:develop
+  newName: quay.io/acidonpe/jump-app-back-springboot
+  newTag: latest
