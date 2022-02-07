@@ -32,7 +32,7 @@ jump-app-cicd:
 
 # Global variables
 global:
-  appsDomain: apps.cluster1.sandbox1324.opentlc.com
+  appsDomain: apps.meshlab.sandbox9.opentlc.com
   # Jump microservices settings
   apps:
     front-javascript:
