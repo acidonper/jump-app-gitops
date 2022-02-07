@@ -20,7 +20,10 @@ jump-app-micros:
     enabled: true
   cicd:
     namespace: jump-app-cicd
-  
+  grpc:
+    enabled: true
+    ssl: false
+
 # Global variables
 global:
   appsDomain: apps.meshlab.sandbox9.opentlc.com
