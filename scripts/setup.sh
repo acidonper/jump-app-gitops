@@ -72,6 +72,9 @@ then
     waitoperatorpod jaeger
     waitoperatorpod istio
 
+    # Preventive wait
+    sleep 30
+    
     # Aplying Controlplane and Memberrole objects
     echo "Installing Istio control plane..."
     oc apply -f ./scripts/files/istio/istio-controlplane.yaml
