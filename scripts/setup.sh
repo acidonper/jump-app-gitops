@@ -106,7 +106,7 @@ then
     sleep 30
     waitknativeserving activator
     waitknativeserving autoscaler
-    waitknativeserving weebhook
+    waitknativeserving webhook
     waitknativeserving domain
     waitknativeserving controller
 
