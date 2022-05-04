@@ -32,7 +32,7 @@ jump-app-cicd:
 
 # Global variables
 global:
-  appsDomain: apps.s3test.sandbox677.opentlc.com
+  appsDomain: apps.s3test.sandbox1628.opentlc.com
   # Jump microservices settings
   apps:
     front-javascript:
