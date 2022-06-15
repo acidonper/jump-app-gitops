@@ -32,7 +32,7 @@ jump-app-cicd:
 
 # Global variables
 global:
-  appsDomain: apps.istioupgrade.sandbox1628.opentlc.com
+  appsDomain: apps.mesh.sandbox663.opentlc.com
   # Jump microservices settings
   apps:
     front-javascript:
