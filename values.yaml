@@ -64,7 +64,7 @@ jump-app-ocp-bootstrap:
       source: redhat-operators
       sourcenamespace: openshift-marketplace
     gitops:
-      enabled: true
+      enabled: false
       channel: stable
       approval: Automatic
       name: openshift-gitops-operator
