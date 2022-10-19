@@ -23,3 +23,7 @@ dependencies:
     repository: 'file://./charts/charts/jump-app-argocd'
     version: 0.1.0
     condition: jump-app-argocd.enabled
+  - name: jump-app-ocp-bootstrap
+    repository: 'file://./charts/charts/jump-app-argocd'
+    version: 0.1.0
+    condition: jump-app-ocp-bootstrap.enabled

@@ -8,124 +8,93 @@
 # Subcharts status
 jump-app-cicd:
   enabled: false
+
 jump-app-argocd:
   enabled: false
+
 jump-app-micros:
+  enabled: false
+
+jump-app-ocp-bootstrap:
   enabled: true
+  catalogsources:
+    jumpapp:
+      enabled: true
+      image: registry.redhat.io/redhat/certified-operator-index:v4.11
+      publiser: Asier
+  operators:
+    tekton:
+      enabled: true
+      channel: latest
+      approval: Automatic
+      name: openshift-pipelines-operator-rh
+      # csv: openshift-pipelines-operator-rh.v1.8.0
+      source: redhat-operators
+      sourcenamespace: openshift-marketplace
+    knative:
+      enabled: true
+      channel: stable
+      approval: Automatic
+      name: serverless-operator
+      # csv: serverless-operator.v1.24.0
+      source: redhat-operators
+      sourcenamespace: openshift-marketplace
+    kiali:
+      enabled: true
+      channel: stable
+      approval: Automatic
+      name: kiali-ossm
+      # csv: kiali-operator.v1.48.3
+      source: redhat-operators
+      sourcenamespace: openshift-marketplace
+    jaeger:
+      enabled: true
+      channel: stable
+      approval: Automatic
+      name: jaeger-product
+      # csv: jaeger-operator.v1.38.0-2
+      source: redhat-operators
+      sourcenamespace: openshift-marketplace
+    servicemesh:
+      enabled: true
+      channel: stable
+      approval: Automatic
+      name: servicemeshoperator
+      # csv: servicemeshoperator.v2.2.3
+      source: redhat-operators
+      sourcenamespace: openshift-marketplace
+    gitops:
+      enabled: true
+      channel: stable
+      approval: Automatic
+      name: openshift-gitops-operator
+      # csv: openshift-gitops-operator.v1.5.6-0.1664915551.p
+      source: redhat-operators
+      sourcenamespace: openshift-marketplace
   istio:
-    enabled: false
+    enabled: true
     namespace: istio-system
-    mtls: true
+    controlplane: basic
+    argocd:
+      controller: openshift-gitops
+    smcp:
+      istiod:
+        replicas: 1
+      gateways:
+        ingress:
+          replicas: 1
+        egress:
+          replicas: 1
+      version: v2.0
+    smmr:
+      namespaces:
+      - mesh-test
+      - jump-app-dev
+      - jump-app-pre
+      - jump-app-pro
   knative:
-    enabled: false
-  cicd:
-    namespace: jump-app-cicd
-  
-# Global variables
-global:
-  appsDomain: apps.acidonpe09.sandbox482.opentlc.com
-  apps:
-    front-javascript:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
-      envVars:
-        APP_REF_NAME: jump-app
-      containerPorts:
-        http:
-          containerPort: 3000
-          protocol: TCP
-      servicePorts:
-        http-8080:
-          port: 8080
-          protocol: TCP
-          targetPort: 3000
-      public: true
-      routeTargetPort: http-8080
-      backend: back-golang
-    back-golang:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
-      envVars:
-        APP_REF_NAME: jump-app
-      containerPorts:
-        http:
-          containerPort: 8442
-          protocol: TCP
-      servicePorts:
-        http-8442:
-          port: 8442
-          protocol: TCP
-          targetPort: 8442
-      public: true
-      routeTargetPort: http-8442
-      frontSettings:
-        var: REACT_APP_GOLANG
-        port: 8442
-    back-python:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
-      envVars:
-        APP_REF_NAME: jump-app
-      containerPorts:
-        http:
-          containerPort: 8080
-          protocol: TCP
-      servicePorts:
-        http-8444:
-          port: 8444
-          protocol: TCP
-          targetPort: 8080
-      public: false
-      routeTargetPort: http-8444
-      frontSettings:
-        var: REACT_APP_PYTHON
-        port: 8444
-    back-springboot:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
-      envVars:
-        APP_REF_NAME: jump-app
-      containerPorts:
-        http:
-          containerPort: 8443
-          protocol: TCP
-      servicePorts:
-        http-8443:
-          port: 8443
-          protocol: TCP
-          targetPort: 8443
-      public: false
-      routeTargetPort: http-8443
-      frontSettings:
-        var: REACT_APP_SPRINGBOOT
-        port: 8443
-    back-quarkus:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
-      envVars:
-        APP_REF_NAME: jump-app
-      containerPorts:
-        http:
-          containerPort: 8080
-          protocol: TCP
-      servicePorts:
-        http-8445:
-          port: 8445
-          protocol: TCP
-          targetPort: 8080
-      public: false
-      routeTargetPort: http-8080
-      knative: false
-      frontSettings:
-        var: REACT_APP_QUARKUS
-        port: 8445
+    enabled: true
+    eventing:
+      enabled: true
+    serving:
+      enabled: true
