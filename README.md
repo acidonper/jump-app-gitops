@@ -50,6 +50,7 @@ This repository has a set of branches in order to manage different environments 
 - feature/jump-app-dev -> Jump App chart with DEV environment configuration
 - feature/jump-app-pre -> Jump App chart with PRE environment configuration
 - feature/jump-app-pro -> Jump App chart with PRO environment configuration
+- feature/bootstrap -> Openshift Cluster bootstrap
 
 ## Quick Start
 
