@@ -18,15 +18,10 @@ jump-app-micros:
 jump-app-ocp-bootstrap:
   enabled: true
   namespaces:
-    - jump-app-dev
-    - jump-app-pre
-    - jump-app-pro
     - jump-app-cicd
-    - istio-system
     - openshift-marketplace
     - openshift-operators
     - bootstrap
-    - mesh-test
     - knative-eventing
     - knative-serving
   argocd:
