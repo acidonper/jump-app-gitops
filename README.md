@@ -54,6 +54,37 @@ This repository has a set of branches in order to manage different environments 
 
 ## Quick Start
 
+### GitOps Approach
+
+_Jump App_ architecture contains three environments (dev, pre and pro) where the application is deployed automatically. If the priority is making use of this solution with three environments and not waste any time, the following procedure install _Jump App_ and configure CI/CD and GitOps solutions automatically:
+
+- Openshift login
+
+```$bash
+oc login -u <user> -p <pass> <ocp_cluster_console>
+```
+
+- Download submodules
+
+```$bash
+git submodule update --remote
+```
+
+- Modify _appsDomain_ parameter (*When it is required)
+
+```$bash
+sh scripts/extra/update_charts_domain.sh apps.mydomain.com 
+```
+
+- Execute _setup.sh_ script for installing Operator
+
+```$bash
+oc login
+sh ./scripts/setup_argocd.sh
+```
+
+### Tradicional Approach
+
 _Jump App_ architecture contains three environments (dev, pre and pro) where the application is deployed automatically. If the priority is making use of this solution with three environments and not waste any time, the following procedure install _Jump App_ and configure CI/CD and GitOps solutions automatically:
 
 - Openshift login
