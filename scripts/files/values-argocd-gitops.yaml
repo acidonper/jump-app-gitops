@@ -16,7 +16,7 @@ helmRepoUrl: https://github.com/acidonper/jump-app-gitops.git
 apps:
   jump-app-cicd:
     branch: feature/jump-app-cicd 
-    enabled: true
+    enabled: false
   jump-app-pro:
     branch: feature/jump-app-pro
     enabled: false
@@ -26,6 +26,9 @@ apps:
   jump-app-dev:
     branch: feature/jump-app-dev 
     enabled: true
+    helm:
+      valueFiles: 
+        - values-quay-sm.yaml
   bootstrap:
     branch: feature/bootstrap
     enabled: true
