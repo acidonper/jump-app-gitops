@@ -12,14 +12,18 @@ mantainers:
 
 dependencies:
   - name: jump-app-micros
-    repository: 'file://./charts/charts/jump-app-micros'
+    repository: 'file://./charts/jump-app-micros'
     version: 0.1.0
     condition: jump-app-micros.enabled
   - name: jump-app-cicd
-    repository: 'file://./charts/charts/jump-app-cicd'
+    repository: 'file://./charts/jump-app-cicd'
     version: 0.1.0
     condition: jump-app-cicd.enabled
   - name: jump-app-argocd
-    repository: 'file://./charts/charts/jump-app-argocd'
+    repository: 'file://./charts/jump-app-argocd'
     version: 0.1.0
     condition: jump-app-argocd.enabled
+  - name: jump-app-ocp-bootstrap
+    repository: 'file://./charts/jump-app-ocp-bootstrap'
+    version: 0.1.0
+    condition: jump-app-ocp-bootstrap.enabled

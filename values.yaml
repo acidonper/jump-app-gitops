@@ -12,6 +12,9 @@ jump-app-cicd:
 jump-app-argocd:
   enabled: false
 
+jump-app-ocp-bootstrap:
+  enabled: false
+  
 jump-app-micros:
   enabled: true
   istio:
