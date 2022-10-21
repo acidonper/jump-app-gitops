@@ -12,6 +12,9 @@ jump-app-micros:
 jump-app-argocd:
   enabled: false
 
+jump-app-ocp-bootstrap:
+  enabled: false
+
 jump-app-cicd:
   enabled: true
   functTestRepo: https://github.com/acidonper/jump-app-functional-tests.git
