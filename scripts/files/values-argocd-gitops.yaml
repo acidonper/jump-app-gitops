@@ -3,7 +3,7 @@
 ##
 
 # Install an additional ArgoCD instance (*Recommended true when Openshift GitOps operator is installed)
-argocdOCPInstance: false
+argocdOCPInstance: true
 argocdNamespace: openshift-gitops
 
 # RBAC (*namespaces are disabled with this value)
