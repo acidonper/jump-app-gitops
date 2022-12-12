@@ -20,6 +20,7 @@ jump-app-ocp-bootstrap:
   ocpversion:
     enabled: true
     channel: "stable-4.11"
+    clusterID: "8b7c4de6-11d9-447e-8fe5-62a0b2f30ced"
     image: "quay.io/openshift-release-dev/ocp-release@sha256:9ffb17b909a4fdef5324ba45ec6dd282985dd49d25b933ea401873183ef20bf8"
     version: "4.11.13"
   namespaces:
