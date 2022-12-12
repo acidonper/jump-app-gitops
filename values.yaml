@@ -17,6 +17,11 @@ jump-app-micros:
 
 jump-app-ocp-bootstrap:
   enabled: true
+  ocpversion:
+    enabled: true
+    channel: "stable-4.11"
+    image: "quay.io/openshift-release-dev/ocp-release@sha256:9ffb17b909a4fdef5324ba45ec6dd282985dd49d25b933ea401873183ef20bf8"
+    version: "4.11.13"
   namespaces:
     - jump-app-cicd
     - openshift-marketplace
