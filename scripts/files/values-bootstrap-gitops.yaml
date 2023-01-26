@@ -2,6 +2,8 @@
 # Jump App Openshift Cluster Bootstrap
 ##
 
+render: true
+
 # No create namespaces
 namespaces:
 
