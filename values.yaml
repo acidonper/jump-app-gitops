@@ -16,6 +16,7 @@ jump-app-micros:
   enabled: false
 
 jump-app-ocp-bootstrap:
+  render: true
   enabled: true
   ocpversion:
     enabled: true
