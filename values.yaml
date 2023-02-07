@@ -40,7 +40,7 @@ global:
   apps:
     front-javascript:
       build: is
-      imagestream: nodejs:latest
+      imagestream: nodejs:14-ubi8
       imagestreamNamespace: openshift
       versions:
         - v1
