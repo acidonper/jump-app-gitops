@@ -29,7 +29,6 @@ jump-app-ocp-bootstrap:
     - openshift-marketplace
     - openshift-operators
     - bootstrap
-    - knative-eventing
     - knative-serving
   argocd:
     enabled: true
