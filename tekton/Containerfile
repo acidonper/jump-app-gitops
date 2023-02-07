@@ -1,0 +1,10 @@
+# Use the httpd-parent image as base
+FROM registry.access.redhat.com/ubi8-minimal
+
+LABEL io.k8s.description="A basic Tekton CLI image" \
+ io.k8s.display-name="Tekton CLI" \
+ io.openshift.tags="tekton"
+
+RUN rpm -i https://github.com/tektoncd/cli/releases/download/v0.29.1/tektoncd-cli-0.29.1_Linux-64bit.rpm
+
+USER 1001
