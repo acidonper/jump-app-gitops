@@ -1,0 +1,138 @@
+##
+# Jump App Microservices Chart values
+#
+# PRO Environments
+#
+##
+
+# Subcharts status
+jump-app-cicd:
+  enabled: false
+
+jump-app-argocd:
+  enabled: false
+
+jump-app-ocp-bootstrap:
+  enabled: false
+  
+jump-app-micros:
+  enabled: true
+  istio:
+    enabled: true
+    namespace: istio-system
+    mtls: true
+  cicd:
+    namespace: jump-app-cicd
+
+# Global variables
+global:
+  appsDomain: apps.acidonpe26.sandbox2932.opentlc.com
+  apps:
+    front-javascript:
+      imagetag: production
+      multiVersions:
+        enabled: true
+        imagetag: production
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 3000
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8080
+          protocol: TCP
+          targetPort: 3000
+      public: true
+      routeTargetPort: http-8080
+      backend: back-golang
+    back-golang:
+      imagetag: production
+      multiVersions:
+        enabled: true
+        imagetag: production
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8442
+          protocol: TCP
+      servicePorts:
+        http-8442:
+          port: 8442
+          protocol: TCP
+          targetPort: 8442
+      public: true
+      routeTargetPort: http-8442
+      frontSettings:
+        var: REACT_APP_GOLANG
+        port: 8442
+    back-python:
+      imagetag: production
+      multiVersions:
+        enabled: true
+        imagetag: production
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+      servicePorts:
+        http-8444:
+          port: 8444
+          protocol: TCP
+          targetPort: 8080
+      public: false
+      routeTargetPort: http-8444
+      frontSettings:
+        var: REACT_APP_PYTHON
+        port: 8444
+    back-springboot:
+      imagetag: production
+      multiVersions:
+        enabled: true
+        imagetag: production
+        v1Traffic: 50
+        v2Traffic: 50
+      replicas: 1
+      envVars:
+        APP_REF_NAME: jump-app
+      containerPorts:
+        http:
+          containerPort: 8080
+          protocol: TCP
+        https:
+          containerPort: 8443
+          protocol: TCP
+        service:
+          containerPort: 8778
+          protocol: TCP
+      servicePorts:
+        http-8080:
+          port: 8080
+          protocol: TCP
+          targetPort: 8080
+        http-8443:
+          port: 8443
+          protocol: TCP
+          targetPort: 8443
+        http-8778:
+          port: 8778
+          protocol: TCP
+          targetPort: 8778
+      public: false
+      routeTargetPort: http-8443
+      frontSettings:
+        var: REACT_APP_SPRINGBOOT
+        port: 8443
