@@ -30,7 +30,7 @@ jump-app-cicd:
   namespaceDev: jump-app-dev
   namespacePre: jump-app-pre
   namespacePro: jump-app-pro
-  namespaceGitOps: gitops-argocd
+  namespaceGitOps: openshift-gitops
   sa: tekton-deployments-admin
 
 # Global variables
