@@ -35,7 +35,7 @@ jump-app-cicd:
 
 # Global variables
 global:
-  appsDomain: apps.acidonpe29.sandbox658.opentlc.com
+  appsDomain: apps.acidonpe31.sandbox1685.opentlc.com
   # Jump microservices settings
   apps:
     front-javascript:
