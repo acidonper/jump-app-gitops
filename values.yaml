@@ -109,25 +109,25 @@ global:
       frontSettings:
         var: REACT_APP_SPRINGBOOT
         port: 8443
-    back-quarkus:
-      imagetag: develop
-      multiVersions:
-        enabled: false
-      replicas: 1
-      envVars:
-        APP_REF_NAME: jump-app
-      containerPorts:
-        http:
-          containerPort: 8080
-          protocol: TCP
-      servicePorts:
-        http-8445:
-          port: 8445
-          protocol: TCP
-          targetPort: 8080
-      public: false
-      routeTargetPort: http-8080
-      knative: false
-      frontSettings:
-        var: REACT_APP_QUARKUS
-        port: 8445
+#    back-quarkus:
+#      imagetag: develop
+#      multiVersions:
+#        enabled: false
+#      replicas: 1
+#      envVars:
+#        APP_REF_NAME: jump-app
+#      containerPorts:
+#        http:
+#          containerPort: 8080
+#          protocol: TCP
+#      servicePorts:
+#        http-8445:
+#          port: 8445
+#          protocol: TCP
+#          targetPort: 8080
+#      public: false
+#      routeTargetPort: http-8080
+#      knative: false
+#      frontSettings:
+#        var: REACT_APP_QUARKUS
+#        port: 8445
