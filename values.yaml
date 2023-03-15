@@ -108,7 +108,7 @@ jump-app-ocp-bootstrap:
       - jump-app-pre
       - jump-app-pro
   knative:
-    enabled: true
+    enabled: false
     eventing:
       enabled: true
     serving:
