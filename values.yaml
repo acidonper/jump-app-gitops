@@ -29,7 +29,6 @@ jump-app-ocp-bootstrap:
     - openshift-marketplace
     - openshift-operators
     - bootstrap
-    - knative-serving
   argocd:
     enabled: true
     controller: openshift-gitops
