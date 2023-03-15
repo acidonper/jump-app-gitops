@@ -21,7 +21,7 @@ jump-app-ocp-bootstrap:
   ocpversion:
     enabled: false
     channel: "stable-4.11"
-    clusterID: "8b7c4de6-11d9-447e-8fe5-62a0b2f30ced"
+    clusterID: "9e157d8b-c2c8-4fdf-903b-85ab4488ad21"
     image: "quay.io/openshift-release-dev/ocp-release@sha256:01c9ef7f802f0ba254847c22e960cd6453ed9f61d9296fdda8bd497712f53e23"
     version: "4.11.16"
   namespaces:
@@ -30,6 +30,10 @@ jump-app-ocp-bootstrap:
     - openshift-operators
     - bootstrap
     - knative-serving
+    - mesh-test
+    - jump-app-dev
+    - jump-app-pre
+    - jump-app-pro
   argocd:
     enabled: true
     controller: openshift-gitops
@@ -101,7 +105,7 @@ jump-app-ocp-bootstrap:
           replicas: 1
         egress:
           replicas: 1
-      version: v2.0
+      version: v2.3
     smmr:
       namespaces:
       - mesh-test
