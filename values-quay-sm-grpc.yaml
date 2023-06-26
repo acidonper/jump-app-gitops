@@ -28,7 +28,7 @@ jump-app-micros:
 
 # Global variables
 global:
-  appsDomain: apps.acidonpe56.sandbox2025.opentlc.com
+  appsDomain: apps.acidonpe57.sandbox2025.opentlc.com
   apps:
     front-javascript:
       imagerepo: quay.io/acidonpe/jump-app-front-javascript-grpc
