@@ -58,7 +58,7 @@ operators:
     sourcenamespace: openshift-marketplace
   gitops:
     enabled: true
-    channel: stable
+    channel: latest
     approval: Automatic
     name: openshift-gitops-operator
     # csv: openshift-gitops-operator.v1.5.6-0.1664915551.p
