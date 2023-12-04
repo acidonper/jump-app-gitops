@@ -28,7 +28,7 @@ jump-app-micros:
 
 # Global variables
 global:
-  appsDomain: apps.acidonpe57.sandbox2025.opentlc.com
+  appsDomain: api-sno-aletia-local
   apps:
     front-javascript:
       imagetag: master
