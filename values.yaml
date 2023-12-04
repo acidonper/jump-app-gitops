@@ -35,7 +35,7 @@ jump-app-cicd:
 
 # Global variables
 global:
-  appsDomain: api-sno-aletia-local
+  appsDomain: api.sno.aletia.local
   # Jump microservices settings
   apps:
     front-javascript:
