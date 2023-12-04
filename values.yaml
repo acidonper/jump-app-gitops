@@ -28,7 +28,7 @@ jump-app-micros:
 
 # Global variables
 global:
-  appsDomain: api-sno-aletia-local
+  appsDomain: api.sno.aletia.local
   apps:
     front-javascript:
       imagetag: master
