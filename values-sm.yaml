@@ -28,7 +28,7 @@ global:
   appsDomain: apps.acidonpe88.sandbox2776.opentlc.com
   apps:
     front-javascript:
-      imagetag: develop
+      imagetag: master
       multiVersions:
         enabled: false
       replicas: 1
