@@ -1,11 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: test01-jump-app
+  name: app01-jump-app
   annotations:
-    argocd/app-name: test01-jump-app
-    backstage.io/kubernetes-id: test01
-    backstage.io/kubernetes-namespace: juamp-app
+    argocd/app-name: app01-jump-app
+    backstage.io/kubernetes-id: app01
+    backstage.io/kubernetes-namespace: jump-app
     backstage.io/source-location: url:https://github.com/acidonper/jump-app-gitops/new/feature/jump-app-dev
     backstage.io/techdocs-ref: url:https://github.com/acidonper/jump-app-gitops/new/feature/jump-app-dev
   tags:
@@ -14,4 +14,4 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: user:default/guest
+  owner: user:guest
