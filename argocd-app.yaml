@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test01-jump-app
+spec:
+  destination:
+    name: ''
+    namespace: jump-app
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .
+    repoURL: 'https://github.com/acidonper/jump-app-gitops.git'
+    targetRevision: feature/jump-app-dev
+    helm:
+      valueFiles:
+        - values-quay.yaml
+      parameters:
+        - name: global.appsDomain
+          value: apps.acidonpe101.sandbox470.opentlc.com
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions: []

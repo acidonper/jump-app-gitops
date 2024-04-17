@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: app01-jump-app
+  annotations:
+    argocd/app-name: app01-jump-app
+    backstage.io/kubernetes-id: app01
+    backstage.io/kubernetes-namespace: jump-app
+    backstage.io/source-location: url:https://github.com/acidonper/jump-app-gitops/new/feature/jump-app-dev
+    backstage.io/techdocs-ref: url:https://github.com/acidonper/jump-app-gitops/new/feature/jump-app-dev
+  tags:
+    - microservices
+    - jumpapp
+spec:
+  type: service
+  lifecycle: production
+  owner: user:guest
