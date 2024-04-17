@@ -70,7 +70,9 @@ global:
       type: java
     back-quarkus:
       build: is
-      imagestream: quarkus:20.2.0-java11
+      imagestream: quarkus:21.3.2-java11
+      image: quay.io/quarkus/ubi-quarkus-native-s2i
+      imageversion: 21.3.2-java11
       versions:
         - v1
       gitRepo: https://github.com/acidonper/jump-app-quarkus.git
