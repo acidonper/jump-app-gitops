@@ -21,6 +21,7 @@ operators:
     channel: latest
     approval: Automatic
     name: openshift-pipelines-operator-rh
+    namespace: openshift-operators
     # csv: openshift-pipelines-operator-rh.v1.8.0
     source: redhat-operators
     sourcenamespace: openshift-marketplace
@@ -29,6 +30,7 @@ operators:
     channel: stable
     approval: Automatic
     name: serverless-operator
+    namespace: openshift-serverless
     # csv: serverless-operator.v1.24.0
     source: redhat-operators
     sourcenamespace: openshift-marketplace
@@ -37,22 +39,25 @@ operators:
     channel: stable
     approval: Automatic
     name: kiali-ossm
+    namespace: openshift-operators
     # csv: kiali-operator.v1.48.3
     source: redhat-operators
     sourcenamespace: openshift-marketplace
   jaeger:
-    enabled: false
+    enabled: true
     channel: stable
     approval: Automatic
     name: jaeger-product
+    namespace: openshift-distributed-tracing
     # csv: jaeger-operator.v1.38.0-2
     source: redhat-operators
     sourcenamespace: openshift-marketplace
   servicemesh:
-    enabled: false
+    enabled: true
     channel: stable
     approval: Automatic
     name: servicemeshoperator
+    namespace: openshift-operators
     # csv: servicemeshoperator.v2.2.3
     source: redhat-operators
     sourcenamespace: openshift-marketplace
@@ -61,13 +66,14 @@ operators:
     channel: latest
     approval: Automatic
     name: openshift-gitops-operator
-    # csv: openshift-gitops-operator.v1.5.6-0.1664915551.p
+    namespace: openshift-gitops-operator
     source: redhat-operators
     sourcenamespace: openshift-marketplace
+    argodefaultinstance: false
 
 # Istio Settings
 istio:
-  enabled: false
+  enabled: true
   namespace: istio-system
   controlplane: basic
   argocd:
