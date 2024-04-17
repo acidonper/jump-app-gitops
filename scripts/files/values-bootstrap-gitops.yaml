@@ -86,7 +86,7 @@ istio:
         replicas: 1
       egress:
         replicas: 1
-    version: v2.0
+    version: v2.5
   smmr:
     namespaces:
     - mesh-test
