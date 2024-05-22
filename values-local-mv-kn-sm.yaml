@@ -25,7 +25,7 @@ jump-app-micros:
   
 # Global variables
 global:
-  appsDomain: apps.acidonpe109.sandbox996.opentlc.com
+  appsDomain: apps.acidonpe116.sandbox142.opentlc.com
   apps:
     front-javascript:
       imagetag: develop
