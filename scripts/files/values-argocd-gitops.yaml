@@ -16,7 +16,7 @@ helmRepoUrl: https://github.com/acidonper/jump-app-gitops.git
 apps:
   jump-app-cicd:
     branch: feature/jump-app-cicd 
-    enabled: false
+    enabled: true
   jump-app-pro:
     branch: feature/jump-app-pro
     enabled: false

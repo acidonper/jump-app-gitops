@@ -4,8 +4,9 @@
 
 render: true
 
-# No create namespaces
 namespaces:
+  - openshift-gitops-operator
+  - openshift-distributed-tracing
 
 # Custom Catalog Source
 catalogsources:
