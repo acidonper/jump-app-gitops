@@ -94,6 +94,7 @@ istio:
     - jump-app-dev
     - jump-app-pre
     - jump-app-pro
+    - jump-app-cicd
 
 # Knative Settings
 knative:
