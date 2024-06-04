@@ -44,7 +44,7 @@ operators:
     # csv: kiali-operator.v1.48.3
     source: redhat-operators
     sourcenamespace: openshift-marketplace
-  jaeger:
+  jaeger-product:
     enabled: true
     channel: stable
     approval: Automatic
@@ -62,7 +62,7 @@ operators:
     # csv: servicemeshoperator.v2.2.3
     source: redhat-operators
     sourcenamespace: openshift-marketplace
-  gitops:
+  openshift-gitops-operator:
     enabled: true
     channel: latest
     approval: Automatic
