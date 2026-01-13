@@ -35,7 +35,7 @@ jump-app-cicd:
 
 # Global variables
 global:
-  appsDomain: apps.acidonpe119.sandbox1889.opentlc.com
+  appsDomain: apps.acidonpe01.apps.cluster-lwt6b.dynamic.redhatworkshops.io
   # Jump microservices settings
   apps:
     front-javascript:
