@@ -25,7 +25,7 @@ jump-app-micros:
   
 # Global variables
 global:
-  appsDomain: apps.acidonpe119.sandbox1889.opentlc.com
+  appsDomain: apps.acidonpe01.apps.cluster-lwt6b.dynamic.redhatworkshops.io
   apps:
     front-javascript:
       imagetag: develop
